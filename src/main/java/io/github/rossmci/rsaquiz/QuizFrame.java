@@ -8,6 +8,7 @@ import java.util.ResourceBundle;
  */
 public class QuizFrame extends javax.swing.JFrame
 {
+
 	private ResourceBundle framesResourceBundle;
 	private RsaQuiz rsaQuiz;
 
@@ -15,9 +16,18 @@ public class QuizFrame extends javax.swing.JFrame
 	{
 		this.rsaQuiz = rsaQuiz;
 
-		this.framesResourceBundle = ResourceBundle.getBundle("bundles/Frames", RsaQuiz.getLocale());
+		this.framesResourceBundle = ResourceBundle.getBundle("bundles/Frames", rsaQuiz.getLocale());
 		initComponents();
 	}
+
+	public void reloadLocaleResource()
+	{
+		this.framesResourceBundle = ResourceBundle.getBundle("bundles/Frames", rsaQuiz.getLocale());
+        optionsToggleButton.setText(framesResourceBundle.getString("QuizFrame.optionsToggleButton.text")); // NOI18N
+        StartToggleButton.setText(framesResourceBundle.getString("QuizFrame.startToggleButton.text")); // NOI18N
+        InstructionLabel.setText(framesResourceBundle.getString("QuizFrame.instructionLabel.text")); // NOI18N
+	}
+
 	/**
 	 * This method is called from within the constructor to initialize the form.
 	 * WARNING: Do NOT modify this code. The content of this method is always

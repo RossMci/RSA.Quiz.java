@@ -1,8 +1,10 @@
 package io.github.rossmci.rsaquiz;
 
 import java.util.Locale;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
-public class RsaQuiz
+public class RsaQuiz implements Runnable
 {
 	public RsaQuiz()
 	{
@@ -10,6 +12,12 @@ public class RsaQuiz
 		quizFrame= new QuizFrame(this);
 		feedBackFrame= new FeedBackFrame(this);
 		splashScreenFrame= new SplashScreenFrame(this);
+	}
+		public void reloadLocaleResource()
+	{
+		this.quizFrame.reloadLocaleResource();
+		this.languageMenuFrame.reloadLocaleResource();
+		this.feedBackFrame.reloadLocaleResource();
 	}
 	public LanguageMenuFrame getLanguageMenuFrame()
 	{
@@ -49,18 +57,45 @@ public class RsaQuiz
 	private FeedBackFrame feedBackFrame;
 	private SplashScreenFrame splashScreenFrame;
 
-	public static Locale getLocale()
+	public Locale getLocale()
 	{
 		return locale;
 	}
-	public static void setLocale(String value)
+	public void setLocale(String value)
 	{
 		locale = new Locale(value);
 	}
-	public static void setLocale(Locale value)
+	public void setLocale(Locale value)
 	{
 		locale = value;
 	}
 
-	private static Locale locale = new Locale("en");
+	private Locale locale = new Locale("fr");
+
+	boolean showSplashScreenFrame=false;
+	@Override
+	public void run()
+	{
+		
+		if(showSplashScreenFrame)
+		{
+		getSplashScreenFrame().setVisible(true);
+		{
+			for (int i = 0; i <= 100; i++)
+			{
+				try
+				{
+					Thread.sleep(60);
+				}
+				catch (InterruptedException ex)
+				{
+					Logger.getLogger(AppLauncher.class.getName()).log(Level.SEVERE, null, ex);
+				}
+				SplashScreenFrame.PercentjLabel.setText("" + i);
+				SplashScreenFrame.ProgressBar.setValue(i);
+			}
+			getSplashScreenFrame().setVisible(false);
+		}
+	}
+		getLanguageMenuFrame().setVisible(true);	}
 }

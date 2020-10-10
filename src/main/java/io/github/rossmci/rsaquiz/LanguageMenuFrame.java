@@ -19,13 +19,13 @@ public class LanguageMenuFrame extends javax.swing.JFrame
 	public LanguageMenuFrame(RsaQuiz rsaQuiz)
 	{
 		this.rsaQuiz = rsaQuiz;
-		this.framesResourceBundle = ResourceBundle.getBundle("bundles/Frames", RsaQuiz.getLocale());
+		this.framesResourceBundle = ResourceBundle.getBundle("bundles/Frames", rsaQuiz.getLocale());
 		initComponents();
 	}
 
-	public void setLocaleData()
+	public void reloadLocaleResource()
 	{
-		this.framesResourceBundle = ResourceBundle.getBundle("bundles/Frames", RsaQuiz.getLocale());
+		this.framesResourceBundle = ResourceBundle.getBundle("bundles/Frames", rsaQuiz.getLocale());
 
 		ieToggleButton.setToolTipText(framesResourceBundle.getString("LanguageMenu.ieToggleButton.toolTipText")); // NOI18N
 		enToggleButton.setToolTipText(framesResourceBundle.getString("LanguageMenu.enToggleButton.toolTipText")); // NOI18N
@@ -174,25 +174,27 @@ public class LanguageMenuFrame extends javax.swing.JFrame
     private void enToggleButtonActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_enToggleButtonActionPerformed
     {//GEN-HEADEREND:event_enToggleButtonActionPerformed
 		this.setVisible(false);
-		RsaQuiz.setLocale("en");
+		this.rsaQuiz.setLocale("en");
+		this.rsaQuiz.reloadLocaleResource();
 		this.rsaQuiz.getQuizFrame().setVisible(true);
-		this.rsaQuiz.getQuizFrame().setLocale(RsaQuiz.getLocale());
     }//GEN-LAST:event_enToggleButtonActionPerformed
 
     private void ieToggleButtonActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_ieToggleButtonActionPerformed
     {//GEN-HEADEREND:event_ieToggleButtonActionPerformed
 		this.setVisible(false);
-		RsaQuiz.setLocale("ie");
+		this.rsaQuiz.setLocale("ie");
+		this.rsaQuiz.reloadLocaleResource();
 		this.rsaQuiz.getQuizFrame().setVisible(true);
-		this.rsaQuiz.getQuizFrame().setLocale(RsaQuiz.getLocale());
+		this.rsaQuiz.getQuizFrame().setLocale(rsaQuiz.getLocale());
     }//GEN-LAST:event_ieToggleButtonActionPerformed
 
     private void frToggleButtonActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_frToggleButtonActionPerformed
     {//GEN-HEADEREND:event_frToggleButtonActionPerformed
 		this.setVisible(false);
-		RsaQuiz.setLocale("fr");
+		this.rsaQuiz.setLocale("fr");
+		this.rsaQuiz.reloadLocaleResource();
 		this.rsaQuiz.getQuizFrame().setVisible(true);
-		this.rsaQuiz.getQuizFrame().setLocale(RsaQuiz.getLocale());
+		this.rsaQuiz.getQuizFrame().setLocale(rsaQuiz.getLocale());
     }//GEN-LAST:event_frToggleButtonActionPerformed
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JToggleButton enToggleButton;
