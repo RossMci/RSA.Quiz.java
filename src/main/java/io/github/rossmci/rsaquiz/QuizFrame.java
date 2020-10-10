@@ -2,34 +2,22 @@ package io.github.rossmci.rsaquiz;
 
 import java.util.ResourceBundle;
 
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
 /**
  *
  * @author Ross Mcinerney
  */
-public class quizJFrame extends javax.swing.JFrame
+public class QuizFrame extends javax.swing.JFrame
 {
+	private ResourceBundle framesResourceBundle;
+	private RsaQuiz rsaQuiz;
 
-	/**
-	 * Creates new form quizJFrame
-	 */
-	public quizJFrame()
+	public QuizFrame(RsaQuiz rsaQuiz)
 	{
+		this.rsaQuiz = rsaQuiz;
+
+		this.framesResourceBundle = ResourceBundle.getBundle("bundles/Frames", RsaQuiz.getLocale());
 		initComponents();
 	}
-	
-//		public  void Translate(){
-//		bundle=ResourceBundle.getBundle("ResourceBundle.Bundles, locale");
-//	   InstructionLabel.setText(bundle.getString("Click_the_images_to_answer_questions"));
-//         
-//		
-//	}
-
 	/**
 	 * This method is called from within the constructor to initialize the form.
 	 * WARNING: Do NOT modify this code. The content of this method is always
@@ -53,6 +41,7 @@ public class quizJFrame extends javax.swing.JFrame
         MaxLabel = new javax.swing.JLabel();
         counterLabel = new javax.swing.JLabel();
         StartToggleButton = new javax.swing.JToggleButton();
+        optionsToggleButton = new javax.swing.JToggleButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(255, 255, 255));
@@ -65,7 +54,7 @@ public class quizJFrame extends javax.swing.JFrame
         TimeLabel.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         TimeLabel.setForeground(new java.awt.Color(255, 255, 255));
         TimeLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        TimeLabel.setText("17:00");
+        TimeLabel.setText("17:00"); // NOI18N
 
         PictureQuestionPanel.setBackground(new java.awt.Color(255, 255, 255));
         PictureQuestionPanel.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 0, 1, 0, new java.awt.Color(255, 51, 51)));
@@ -87,7 +76,7 @@ public class quizJFrame extends javax.swing.JFrame
 
         InstructionLabel.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         InstructionLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        InstructionLabel.setText("Click the images to answer questions ");
+        InstructionLabel.setText(framesResourceBundle.getString("QuizFrame.instructionLabel.text")); // NOI18N
 
         javax.swing.GroupLayout PictureQuestionPanelLayout = new javax.swing.GroupLayout(PictureQuestionPanel);
         PictureQuestionPanel.setLayout(PictureQuestionPanelLayout);
@@ -129,28 +118,41 @@ public class quizJFrame extends javax.swing.JFrame
         SymbolLabel.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         SymbolLabel.setForeground(new java.awt.Color(255, 255, 255));
         SymbolLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        SymbolLabel.setText("/");
+        SymbolLabel.setText("/"); // NOI18N
 
         MaxLabel.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         MaxLabel.setForeground(new java.awt.Color(255, 255, 255));
         MaxLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        MaxLabel.setText("20");
+        MaxLabel.setText("20"); // NOI18N
 
         counterLabel.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         counterLabel.setForeground(new java.awt.Color(255, 255, 255));
         counterLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        counterLabel.setText("1");
+        counterLabel.setText("1"); // NOI18N
 
         StartToggleButton.setBackground(new java.awt.Color(0, 0, 0));
         StartToggleButton.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         StartToggleButton.setForeground(new java.awt.Color(255, 255, 255));
-        StartToggleButton.setText("Start Quiz");
+        StartToggleButton.setText(framesResourceBundle.getString("QuizFrame.startToggleButton.text")); // NOI18N
         StartToggleButton.setBorder(null);
         StartToggleButton.addActionListener(new java.awt.event.ActionListener()
         {
             public void actionPerformed(java.awt.event.ActionEvent evt)
             {
                 StartToggleButtonActionPerformed(evt);
+            }
+        });
+
+        optionsToggleButton.setBackground(new java.awt.Color(0, 0, 0));
+        optionsToggleButton.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        optionsToggleButton.setForeground(new java.awt.Color(255, 255, 255));
+        optionsToggleButton.setText(framesResourceBundle.getString("QuizFrame.optionsToggleButton.text")); // NOI18N
+        optionsToggleButton.setBorder(null);
+        optionsToggleButton.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
+                optionsToggleButtonActionPerformed(evt);
             }
         });
 
@@ -162,7 +164,7 @@ public class quizJFrame extends javax.swing.JFrame
             .addComponent(QuestionLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(mainPanelLayout.createSequentialGroup()
                 .addGap(18, 18, 18)
-                .addComponent(TimeLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(TimeLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 51, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(imagelabel, javax.swing.GroupLayout.PREFERRED_SIZE, 334, javax.swing.GroupLayout.PREFERRED_SIZE))
             .addGroup(mainPanelLayout.createSequentialGroup()
@@ -176,7 +178,9 @@ public class quizJFrame extends javax.swing.JFrame
             .addGroup(mainPanelLayout.createSequentialGroup()
                 .addGap(135, 135, 135)
                 .addComponent(StartToggleButton, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(optionsToggleButton, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
         mainPanelLayout.setVerticalGroup(
             mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -196,8 +200,10 @@ public class quizJFrame extends javax.swing.JFrame
                     .addComponent(MaxLabel)
                     .addComponent(counterLabel))
                 .addGap(18, 18, 18)
-                .addComponent(StartToggleButton)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(StartToggleButton)
+                    .addComponent(optionsToggleButton))
+                .addContainerGap(16, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -221,53 +227,14 @@ public class quizJFrame extends javax.swing.JFrame
 
     private void StartToggleButtonActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_StartToggleButtonActionPerformed
     {//GEN-HEADEREND:event_StartToggleButtonActionPerformed
-        // TODO add your handling code here:
+		// TODO add your handling code here:
     }//GEN-LAST:event_StartToggleButtonActionPerformed
 
-	/**
-	 * @param args the command line arguments
-	 */
-	public static void main(String args[])
-	{
-		/* Set the Nimbus look and feel */
-		//<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-		/* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-		 */
-		try
-		{
-			for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels())
-			{
-				if ("Nimbus".equals(info.getName()))
-				{
-					javax.swing.UIManager.setLookAndFeel(info.getClassName());
-					break;
-				}
-			}
-		} catch (ClassNotFoundException ex)
-		{
-			java.util.logging.Logger.getLogger(quizJFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-		} catch (InstantiationException ex)
-		{
-			java.util.logging.Logger.getLogger(quizJFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-		} catch (IllegalAccessException ex)
-		{
-			java.util.logging.Logger.getLogger(quizJFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-		} catch (javax.swing.UnsupportedLookAndFeelException ex)
-		{
-			java.util.logging.Logger.getLogger(quizJFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-		}
-		//</editor-fold>
-
-		/* Create and display the form */
-		java.awt.EventQueue.invokeLater(new Runnable()
-		{
-			public void run()
-			{
-				new quizJFrame().setVisible(true);
-			}
-		});
-	}
+    private void optionsToggleButtonActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_optionsToggleButtonActionPerformed
+    {//GEN-HEADEREND:event_optionsToggleButtonActionPerformed
+		this.rsaQuiz.getLanguageMenuFrame().setVisible(true);
+		this.setVisible(false);
+    }//GEN-LAST:event_optionsToggleButtonActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public static javax.swing.JLabel InstructionLabel;
@@ -280,6 +247,7 @@ public class quizJFrame extends javax.swing.JFrame
     private javax.swing.JLabel counterLabel;
     private javax.swing.JLabel imagelabel;
     private javax.swing.JPanel mainPanel;
+    private javax.swing.JToggleButton optionsToggleButton;
     private javax.swing.JToggleButton pic1ToggleButton;
     private javax.swing.JToggleButton pic2ToggleButton;
     private javax.swing.JToggleButton pic3Button;

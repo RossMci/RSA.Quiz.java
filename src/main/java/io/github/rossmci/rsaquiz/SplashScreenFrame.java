@@ -6,12 +6,15 @@ package io.github.rossmci.rsaquiz;
  */
 public class SplashScreenFrame extends javax.swing.JFrame
 {
+	private RsaQuiz rsaQuiz;
 
 	/**
 	 * Creates new form RSASplash
 	 */
-	public SplashScreenFrame()
+	public SplashScreenFrame(RsaQuiz rsaQuiz)
 	{
+		this.rsaQuiz = rsaQuiz;
+
 		initComponents();
 	}
 
