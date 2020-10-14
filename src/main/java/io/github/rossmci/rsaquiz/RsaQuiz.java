@@ -72,7 +72,7 @@ public class RsaQuiz implements Runnable
 
 	private Locale locale = new Locale("fr");
 
-	boolean showSplashScreenFrame=false;
+	boolean showSplashScreenFrame=true;
 	@Override
 	public void run()
 	{

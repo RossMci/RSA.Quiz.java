@@ -1,5 +1,7 @@
 package io.github.rossmci.rsaquiz;
 
+import java.text.DateFormat;
+import java.util.GregorianCalendar;
 import java.util.Locale;
 import java.util.ResourceBundle;
 
@@ -12,15 +14,21 @@ public class LanguageMenuFrame extends javax.swing.JFrame
 	private ResourceBundle framesResourceBundle;
 
 	private RsaQuiz rsaQuiz;
-	Locale locale;
+	Locale locale=Locale.getDefault();
+	Locale enLocale= new Locale("en","EN");
+	private QuizFrame quizFrame;
+	GregorianCalendar cal = new GregorianCalendar();
 	/**
 	 * Creates new form OptionsJFrame
 	 */
 	public LanguageMenuFrame(RsaQuiz rsaQuiz)
 	{
+		this.enLocale = Locale.getDefault();
 		this.rsaQuiz = rsaQuiz;
 		this.framesResourceBundle = ResourceBundle.getBundle("bundles/Frames", rsaQuiz.getLocale());
+		 DateFormat formatter = DateFormat.getDateTimeInstance(DateFormat.SHORT, DateFormat.SHORT, enLocale);
 		initComponents();
+		 TimeLabel.setText(formatter.format(cal.getTime()));
 	}
 
 	public void reloadLocaleResource()
@@ -32,6 +40,8 @@ public class LanguageMenuFrame extends javax.swing.JFrame
 		frToggleButton.setToolTipText(framesResourceBundle.getString("LanguageMenu.frToggleButton.toolTipText")); // NOI18N
 		titleLabel.setText(framesResourceBundle.getString("LanguageMenu.titleLabel.text")); // NOI18N
 		setTitle(framesResourceBundle.getString("LanguageMenu.title")); // NOI18N
+		  DateFormat formatter = DateFormat.getDateTimeInstance(DateFormat.SHORT, DateFormat.SHORT, rsaQuiz.getLocale());
+		  TimeLabel.setText(formatter.format(cal.getTime()));
 	}
 	/**
 	 * This method is called from within the constructor to initialize the form.
@@ -43,8 +53,9 @@ public class LanguageMenuFrame extends javax.swing.JFrame
     private void initComponents()
     {
 
+        jComboBox1 = new javax.swing.JComboBox<>();
         headingPanel = new javax.swing.JPanel();
-        timeLabel = new javax.swing.JLabel();
+        TimeLabel = new javax.swing.JLabel();
         imageLabel = new javax.swing.JLabel();
         titleLabel = new javax.swing.JLabel();
         flagPanel = new javax.swing.JPanel();
@@ -52,16 +63,18 @@ public class LanguageMenuFrame extends javax.swing.JFrame
         ieToggleButton = new javax.swing.JToggleButton();
         enToggleButton = new javax.swing.JToggleButton();
 
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle(framesResourceBundle.getString("LanguageMenu.title")); // NOI18N
 
         headingPanel.setBackground(new java.awt.Color(255, 51, 51));
 
-        timeLabel.setBackground(new java.awt.Color(255, 255, 255));
-        timeLabel.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        timeLabel.setForeground(new java.awt.Color(255, 255, 255));
-        timeLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        timeLabel.setText("17:00"); // NOI18N
+        TimeLabel.setBackground(new java.awt.Color(255, 255, 255));
+        TimeLabel.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        TimeLabel.setForeground(new java.awt.Color(255, 255, 255));
+        TimeLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        TimeLabel.setText("17:00"); // NOI18N
 
         imageLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         imageLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/rsa-logo.png"))); // NOI18N
@@ -75,22 +88,26 @@ public class LanguageMenuFrame extends javax.swing.JFrame
         headingPanel.setLayout(headingPanelLayout);
         headingPanelLayout.setHorizontalGroup(
             headingPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(headingPanelLayout.createSequentialGroup()
-                .addGap(2, 2, 2)
-                .addComponent(timeLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
             .addComponent(titleLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(imageLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(headingPanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(TimeLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 211, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(imageLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 333, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         headingPanelLayout.setVerticalGroup(
             headingPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(headingPanelLayout.createSequentialGroup()
-                .addComponent(timeLabel)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(imageLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(titleLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(12, Short.MAX_VALUE))
+                .addGroup(headingPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(headingPanelLayout.createSequentialGroup()
+                        .addGap(10, 10, 10)
+                        .addComponent(TimeLabel)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 22, Short.MAX_VALUE))
+                    .addGroup(headingPanelLayout.createSequentialGroup()
+                        .addComponent(imageLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
+                .addComponent(titleLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         flagPanel.setBackground(new java.awt.Color(0, 0, 0));
@@ -197,13 +214,14 @@ public class LanguageMenuFrame extends javax.swing.JFrame
 		this.rsaQuiz.getQuizFrame().setLocale(rsaQuiz.getLocale());
     }//GEN-LAST:event_frToggleButtonActionPerformed
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel TimeLabel;
     private javax.swing.JToggleButton enToggleButton;
     private javax.swing.JPanel flagPanel;
     private javax.swing.JToggleButton frToggleButton;
     private javax.swing.JPanel headingPanel;
     private javax.swing.JToggleButton ieToggleButton;
     private javax.swing.JLabel imageLabel;
-    private javax.swing.JLabel timeLabel;
+    private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel titleLabel;
     // End of variables declaration//GEN-END:variables
 }
