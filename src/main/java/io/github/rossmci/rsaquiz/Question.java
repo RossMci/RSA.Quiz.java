@@ -5,6 +5,7 @@
  */
 package io.github.rossmci.rsaquiz;
 
+import java.io.File;
 import javax.swing.ImageIcon;
 
 /**
@@ -27,6 +28,7 @@ public class Question
 		this.questionText = questionText;
 	}
 	
+	File folder= new File("");
 	
 	
 }

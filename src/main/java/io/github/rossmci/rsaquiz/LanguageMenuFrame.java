@@ -11,13 +11,15 @@ import java.util.ResourceBundle;
  */
 public class LanguageMenuFrame extends javax.swing.JFrame
 {
+
 	private ResourceBundle framesResourceBundle;
 
 	private RsaQuiz rsaQuiz;
-	Locale locale=Locale.getDefault();
-	Locale enLocale= new Locale("en","EN");
+	Locale locale = Locale.getDefault();
+	Locale enLocale = new Locale("en", "EN");
 	private QuizFrame quizFrame;
 	GregorianCalendar cal = new GregorianCalendar();
+
 	/**
 	 * Creates new form OptionsJFrame
 	 */
@@ -26,9 +28,9 @@ public class LanguageMenuFrame extends javax.swing.JFrame
 		this.enLocale = Locale.getDefault();
 		this.rsaQuiz = rsaQuiz;
 		this.framesResourceBundle = ResourceBundle.getBundle("bundles/Frames", rsaQuiz.getLocale());
-		 DateFormat formatter = DateFormat.getDateTimeInstance(DateFormat.SHORT, DateFormat.SHORT, enLocale);
+		DateFormat formatter = DateFormat.getDateTimeInstance(DateFormat.SHORT, DateFormat.SHORT, enLocale);
 		initComponents();
-		 TimeLabel.setText(formatter.format(cal.getTime()));
+		TimeLabel.setText(formatter.format(cal.getTime()));
 	}
 
 	public void reloadLocaleResource()
@@ -40,9 +42,10 @@ public class LanguageMenuFrame extends javax.swing.JFrame
 		frToggleButton.setToolTipText(framesResourceBundle.getString("LanguageMenu.frToggleButton.toolTipText")); // NOI18N
 		titleLabel.setText(framesResourceBundle.getString("LanguageMenu.titleLabel.text")); // NOI18N
 		setTitle(framesResourceBundle.getString("LanguageMenu.title")); // NOI18N
-		  DateFormat formatter = DateFormat.getDateTimeInstance(DateFormat.SHORT, DateFormat.SHORT, rsaQuiz.getLocale());
-		  TimeLabel.setText(formatter.format(cal.getTime()));
+		DateFormat formatter = DateFormat.getDateTimeInstance(DateFormat.SHORT, DateFormat.SHORT, rsaQuiz.getLocale());
+		TimeLabel.setText(formatter.format(cal.getTime()));
 	}
+
 	/**
 	 * This method is called from within the constructor to initialize the form.
 	 * WARNING: Do NOT modify this code. The content of this method is always

@@ -70,7 +70,7 @@ public class RsaQuiz implements Runnable
 		locale = value;
 	}
 
-	private Locale locale = new Locale("fr");
+	private Locale locale = new Locale("en");
 
 	boolean showSplashScreenFrame=true;
 	@Override
@@ -85,7 +85,7 @@ public class RsaQuiz implements Runnable
 			{
 				try
 				{
-					Thread.sleep(60);
+					Thread.sleep(20);
 				}
 				catch (InterruptedException ex)
 				{
