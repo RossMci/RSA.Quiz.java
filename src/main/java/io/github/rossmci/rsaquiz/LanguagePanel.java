@@ -9,11 +9,25 @@ import java.util.ResourceBundle;
 public class LanguagePanel extends javax.swing.JPanel
 {
 
+	public LanguagePanel()
+	{
+		this.framesResourceBundle = ResourceBundle.getBundle("bundles/Frames");
+		initComponents();
+	}
+
 	public LanguagePanel(RsaQuiz rsaQuiz)
 	{
 		this.rsaQuiz = rsaQuiz;
 		this.framesResourceBundle = ResourceBundle.getBundle("bundles/Frames", rsaQuiz.getLocale());
 		initComponents();
+	}
+	public RsaQuiz getRsaQuiz()
+	{
+		return rsaQuiz;
+	}
+	public void setRsaQuiz(RsaQuiz rsaQuiz)
+	{
+		this.rsaQuiz = rsaQuiz;
 	}
 
 	public void reloadLocaleResource()
@@ -34,7 +48,7 @@ public class LanguagePanel extends javax.swing.JPanel
 		this.rsaQuiz.getQuizFrame().setLocale(rsaQuiz.getLocale());
 	}
 	private ResourceBundle framesResourceBundle;
-	private final RsaQuiz rsaQuiz;
+	private RsaQuiz rsaQuiz;
 
 	/**
 	 * /**
