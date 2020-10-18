@@ -34,24 +34,49 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
+          <Component id="headingPanel1" max="32767" attributes="0"/>
           <Group type="102" attributes="0">
-              <Component id="headingPanel1" min="-2" pref="565" max="-2" attributes="0"/>
-              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-          </Group>
-          <Group type="102" alignment="1" attributes="0">
-              <EmptySpace max="32767" attributes="0"/>
-              <Component id="headingPanel2" min="-2" pref="565" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="23" max="-2" attributes="0"/>
+              <Component id="splashScreenPanel1" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
+              <Component id="userFeedBackPanel1" min="-2" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="141" max="-2" attributes="0"/>
+              <Component id="quizPanel2" min="-2" pref="499" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="16" max="-2" attributes="0"/>
+              <Component id="languagePanel1" min="-2" max="-2" attributes="0"/>
+              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
-              <Component id="headingPanel1" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
-              <Component id="headingPanel2" min="-2" max="-2" attributes="0"/>
-              <EmptySpace min="0" pref="186" max="32767" attributes="0"/>
+              <Component id="headingPanel1" min="-2" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" attributes="0">
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="102" alignment="0" attributes="0">
+                              <Component id="languagePanel1" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                          </Group>
+                          <Group type="102" alignment="1" attributes="0">
+                              <EmptySpace min="0" pref="2" max="32767" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="splashScreenPanel1" alignment="1" min="-2" max="-2" attributes="0"/>
+                                  <Component id="quizPanel2" alignment="1" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                          </Group>
+                      </Group>
+                      <EmptySpace max="-2" attributes="0"/>
+                  </Group>
+                  <Group type="102" alignment="1" attributes="0">
+                      <EmptySpace max="32767" attributes="0"/>
+                      <Component id="userFeedBackPanel1" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
+                  </Group>
+              </Group>
           </Group>
       </Group>
     </DimensionLayout>
@@ -59,7 +84,13 @@
   <SubComponents>
     <Component class="io.github.rossmci.rsaquiz.HeadingPanel" name="headingPanel1">
     </Component>
-    <Component class="io.github.rossmci.rsaquiz.HeadingPanel" name="headingPanel2">
+    <Component class="io.github.rossmci.rsaquiz.LanguagePanel" name="languagePanel1">
+    </Component>
+    <Component class="io.github.rossmci.rsaquiz.SplashScreenPanel" name="splashScreenPanel1">
+    </Component>
+    <Component class="io.github.rossmci.rsaquiz.QuizPanel" name="quizPanel2">
+    </Component>
+    <Component class="io.github.rossmci.rsaquiz.UserFeedBackPanel" name="userFeedBackPanel1">
     </Component>
   </SubComponents>
 </Form>

@@ -14,6 +14,8 @@ public class AppLauncher
 	{
 		RsaQuiz rsaQuiz = new RsaQuiz();
 		rsaQuiz.run();
+		
+		new RsaQuizFrame().run();
 	}
-	//hi
+	
 }

@@ -1,28 +1,48 @@
 package io.github.rossmci.rsaquiz;
 
-import java.text.DateFormat;
-import java.util.GregorianCalendar;
 import java.util.ResourceBundle;
 
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
 /**
  *
  * @author Ross Mcinerney
  */
-public class QuizFrame extends javax.swing.JFrame
+public class QuizPanel extends javax.swing.JPanel
 {
 
-	private ResourceBundle framesResourceBundle;
-	private RsaQuiz rsaQuiz;
-	   GregorianCalendar cal = new GregorianCalendar();
+	/**
+	 * Creates new form QuizJPanel
+	 */
+	public QuizPanel()
+	{
+		this.framesResourceBundle = ResourceBundle.getBundle("bundles/Frames");
+		initComponents();
+	}
 
-	public QuizFrame(RsaQuiz rsaQuiz)
+	public QuizPanel(RsaQuiz rsaQuiz)
 	{
 		this.rsaQuiz = rsaQuiz;
-
 		this.framesResourceBundle = ResourceBundle.getBundle("bundles/Frames", rsaQuiz.getLocale());
 		initComponents();
 	}
 
+	public RsaQuiz getRsaQuiz()
+	{
+		return rsaQuiz;
+	}
+
+	public void setRsaQuiz(RsaQuiz rsaQuiz)
+	{
+		this.rsaQuiz = rsaQuiz;
+	}
+
+	private ResourceBundle framesResourceBundle;
+	private RsaQuiz rsaQuiz;
+	
 	public void reloadLocaleResource()
 	{
 		this.framesResourceBundle = ResourceBundle.getBundle("bundles/Frames", rsaQuiz.getLocale());
@@ -31,8 +51,8 @@ public class QuizFrame extends javax.swing.JFrame
         InstructionLabel.setText(framesResourceBundle.getString("QuizFrame.instructionLabel.text")); // NOI18N
 		
 		//TODO:this.TimeLabel.setText(date.tosTring(rsaQuiz.getLocale()));
-	      DateFormat formatter = DateFormat.getDateTimeInstance(DateFormat.SHORT, DateFormat.SHORT, rsaQuiz.getLocale());
-		  TimeLabel.setText(formatter.format(cal.getTime()));
+//	      DateFormat formatter = DateFormat.getDateTimeInstance(DateFormat.SHORT, DateFormat.SHORT, rsaQuiz.getLocale());
+//		  TimeLabel.setText(formatter.format(cal.getTime()));
 	}
 
 	/**
@@ -59,9 +79,6 @@ public class QuizFrame extends javax.swing.JFrame
         counterLabel = new javax.swing.JLabel();
         StartToggleButton = new javax.swing.JToggleButton();
         optionsToggleButton = new javax.swing.JToggleButton();
-
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setBackground(new java.awt.Color(255, 255, 255));
 
         mainPanel.setBackground(new java.awt.Color(255, 51, 51));
 
@@ -108,9 +125,6 @@ public class QuizFrame extends javax.swing.JFrame
                 .addGap(0, 0, Short.MAX_VALUE))
             .addComponent(InstructionLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
-
-        PictureQuestionPanelLayout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {pic1ToggleButton, pic2ToggleButton, pic3Button});
-
         PictureQuestionPanelLayout.setVerticalGroup(
             PictureQuestionPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(PictureQuestionPanelLayout.createSequentialGroup()
@@ -226,8 +240,8 @@ public class QuizFrame extends javax.swing.JFrame
                         .addContainerGap())))
         );
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
+        this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(mainPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -236,9 +250,6 @@ public class QuizFrame extends javax.swing.JFrame
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(mainPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
-
-        pack();
-        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void StartToggleButtonActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_StartToggleButtonActionPerformed
@@ -251,6 +262,7 @@ public class QuizFrame extends javax.swing.JFrame
 		this.rsaQuiz.setLanguageMenuVisible(true);
 		this.setVisible(false);
     }//GEN-LAST:event_optionsToggleButtonActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public static javax.swing.JLabel InstructionLabel;

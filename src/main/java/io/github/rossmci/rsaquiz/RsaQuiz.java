@@ -4,7 +4,7 @@ import java.util.Locale;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-public class RsaQuiz implements Runnable
+public class RsaQuiz implements RsaQuizManger
 {
 	public RsaQuiz()
 	{
@@ -13,13 +13,14 @@ public class RsaQuiz implements Runnable
 		feedBackFrame= new FeedBackFrame(this);
 		splashScreenFrame= new SplashScreenFrame(this);
 	}
+	@Override
 		public void reloadLocaleResource()
 	{
 		this.quizFrame.reloadLocaleResource();
 		this.languageMenuFrame.reloadLocaleResource();
 		this.feedBackFrame.reloadLocaleResource();
 	}
-	public LanguageMenuFrame getLanguageMenuFrame()
+	private LanguageMenuFrame getLanguageMenuFrame()
 	{
 		return languageMenuFrame;
 	}
@@ -27,7 +28,7 @@ public class RsaQuiz implements Runnable
 	{
 		this.languageMenuFrame = languageMenuFrame;
 	}
-	public QuizFrame getQuizFrame()
+	private QuizFrame getQuizFrame()
 	{
 		return quizFrame;
 	}
@@ -35,7 +36,7 @@ public class RsaQuiz implements Runnable
 	{
 		this.quizFrame = quizFrame;
 	}
-	public FeedBackFrame getFeedBackFrame()
+	private FeedBackFrame getFeedBackFrame()
 	{
 		return feedBackFrame;
 	}
@@ -43,7 +44,7 @@ public class RsaQuiz implements Runnable
 	{
 		this.feedBackFrame = feedBackFrame;
 	}
-	public SplashScreenFrame getSplashScreenFrame()
+	private SplashScreenFrame getSplashScreenFrame()
 	{
 		return splashScreenFrame;
 	}
@@ -57,14 +58,17 @@ public class RsaQuiz implements Runnable
 	private FeedBackFrame feedBackFrame;
 	private SplashScreenFrame splashScreenFrame;
 
+	@Override
 	public Locale getLocale()
 	{
 		return locale;
 	}
+	@Override
 	public void setLocale(String value)
 	{
 		locale = new Locale(value);
 	}
+	@Override
 	public void setLocale(Locale value)
 	{
 		locale = value;
@@ -98,4 +102,28 @@ public class RsaQuiz implements Runnable
 		}
 	}
 		getLanguageMenuFrame().setVisible(true);	}
+//todo: same for the rest 
+	@Override
+	public void setLanguageMenuVisible(boolean visible)
+	{
+		this.languageMenuFrame.setVisible(visible);
+	}
+
+	@Override
+	public void setQuizVisible(boolean visible)
+	{
+      this.quizFrame.setVisible(visible);
+	}
+
+	@Override
+	public void setFeedBackVisible(boolean visible)
+	{
+         this.feedBackFrame.setVisible(visible);
+	}
+
+	@Override
+	public void setSplashScreenVisible(boolean visible)
+	{
+		this.splashScreenFrame.setVisible(visible);
+	}
 }

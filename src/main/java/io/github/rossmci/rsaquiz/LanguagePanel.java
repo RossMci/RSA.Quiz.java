@@ -44,8 +44,9 @@ public class LanguagePanel extends javax.swing.JPanel
 		this.setVisible(false);
 		this.rsaQuiz.setLocale(locale);
 		this.rsaQuiz.reloadLocaleResource();
-		this.rsaQuiz.getQuizFrame().setVisible(true);
-		this.rsaQuiz.getQuizFrame().setLocale(rsaQuiz.getLocale());
+		this.rsaQuiz.setQuizVisible(true);
+//		this.rsaQuiz.getQuizFrame().setLocale(rsaQuiz.getLocale());
+		this.rsaQuiz.setLocale(locale);
 	}
 	private ResourceBundle framesResourceBundle;
 	private RsaQuiz rsaQuiz;

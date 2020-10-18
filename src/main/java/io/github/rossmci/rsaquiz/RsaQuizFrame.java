@@ -5,20 +5,76 @@
  */
 package io.github.rossmci.rsaquiz;
 
+import java.util.Locale;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JPanel;
+
 /**
  *
  * @author Ross Mcinerney
  */
-public class RsaQuizFrame extends javax.swing.JFrame
+public class RsaQuizFrame extends javax.swing.JFrame implements RsaQuizManger
 {
-
+private final JPanel[] panels=new JPanel[5];
 	/**
 	 * Creates new form RsaQuizFrame
 	 */
 	public RsaQuizFrame()
 	{
 		initComponents();
+		panels[0]=this.languagePanel1;
+		panels[1]=this.headingPanel1;
+		panels[2]=this.splashScreenPanel1;
+		panels[3]=this.quizPanel2;
+		panels[4]=this.userFeedBackPanel1;
 	}
+		@Override
+	public Locale getLocale()
+	{
+		return locale;
+	}
+	@Override
+	public void setLocale(String value)
+	{
+		locale = new Locale(value);
+	}
+	@Override
+	public void setLocale(Locale value)
+	{
+		locale = value;
+	}
+    private final String defaultLocale="en";
+	private final int splashScreenSpeed=6;//60
+	private Locale locale = new Locale(defaultLocale);
+	
+
+	boolean showSplashScreenFrame=true;
+	@Override
+	public void run()
+	{
+		
+		if(showSplashScreenFrame)
+		{
+			setSplashScreenVisible(true);
+		{
+			for (int i = 0; i <= 100; i++)
+			{
+				try
+				{
+					Thread.sleep(splashScreenSpeed);
+				}
+				catch (InterruptedException ex)
+				{
+					Logger.getLogger(AppLauncher.class.getName()).log(Level.SEVERE, null, ex);
+				}
+				SplashScreenFrame.PercentjLabel.setText("" + i);
+				SplashScreenFrame.ProgressBar.setValue(i);
+			}
+			setSplashScreenVisible(false);
+		}
+	}
+		setLanguageMenuVisible(true);	}
 
 	/**
 	 * This method is called from within the constructor to initialize the form.
@@ -32,7 +88,10 @@ public class RsaQuizFrame extends javax.swing.JFrame
 
         jMenu1 = new javax.swing.JMenu();
         headingPanel1 = new io.github.rossmci.rsaquiz.HeadingPanel();
-        headingPanel2 = new io.github.rossmci.rsaquiz.HeadingPanel();
+        languagePanel1 = new io.github.rossmci.rsaquiz.LanguagePanel();
+        splashScreenPanel1 = new io.github.rossmci.rsaquiz.SplashScreenPanel();
+        quizPanel2 = new io.github.rossmci.rsaquiz.QuizPanel();
+        userFeedBackPanel1 = new io.github.rossmci.rsaquiz.UserFeedBackPanel();
 
         jMenu1.setText("jMenu1");
 
@@ -42,21 +101,40 @@ public class RsaQuizFrame extends javax.swing.JFrame
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(headingPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(headingPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 565, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(23, 23, 23)
+                .addComponent(splashScreenPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(userFeedBackPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(141, 141, 141)
+                .addComponent(quizPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 499, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(16, 16, 16)
+                .addComponent(languagePanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(headingPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 565, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
                 .addComponent(headingPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(headingPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 186, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(languagePanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(0, 0, Short.MAX_VALUE))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addGap(0, 2, Short.MAX_VALUE)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(splashScreenPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(quizPanel2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addContainerGap())
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(userFeedBackPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(20, 20, 20))))
         );
 
         pack();
@@ -114,7 +192,41 @@ public class RsaQuizFrame extends javax.swing.JFrame
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private io.github.rossmci.rsaquiz.HeadingPanel headingPanel1;
-    private io.github.rossmci.rsaquiz.HeadingPanel headingPanel2;
     private javax.swing.JMenu jMenu1;
+    private io.github.rossmci.rsaquiz.LanguagePanel languagePanel1;
+    private io.github.rossmci.rsaquiz.QuizPanel quizPanel2;
+    private io.github.rossmci.rsaquiz.SplashScreenPanel splashScreenPanel1;
+    private io.github.rossmci.rsaquiz.UserFeedBackPanel userFeedBackPanel1;
     // End of variables declaration//GEN-END:variables
+
+	@Override
+	public void reloadLocaleResource()
+	{
+		this.languagePanel1.reloadLocaleResource();
+	}
+
+	@Override
+	public void setLanguageMenuVisible(boolean visible)
+	{
+		this.languagePanel1.setVisible(visible);
+	}
+
+	@Override
+	public void setQuizVisible(boolean visible)
+	{
+		this.quizPanel2.setVisible(visible);
+	}
+
+	@Override
+	public void setFeedBackVisible(boolean visible)
+	{
+		this.userFeedBackPanel1.setVisible(visible);
+	}
+
+	@Override
+	public void setSplashScreenVisible(boolean visible)
+	{
+		this.splashScreenPanel1.setVisible(visible);
+	}
+
 }

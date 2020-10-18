@@ -17,16 +17,16 @@ import javax.swing.Timer;
  */
 public class HeadingPanel extends javax.swing.JPanel
 {
-
+	
 	public void clock(){
 	Timer t = new Timer(1000, updateClockAction);
 	t.start ();
+	
 }
 	
 	ActionListener updateClockAction = new ActionListener() {
   @Override
   public void actionPerformed(ActionEvent e) {
-	  System.out.println("it here");
     timeDisplayLabel.setText(new Date().toString()); 
     }
 };
@@ -39,6 +39,7 @@ public class HeadingPanel extends javax.swing.JPanel
 	{
 		this.framesResourceBundle = ResourceBundle.getBundle("bundles/Frames");
 		initComponents();
+		clock();
 	}
 	public HeadingPanel(RsaQuiz rsaQuiz)
 	{
@@ -94,6 +95,7 @@ public class HeadingPanel extends javax.swing.JPanel
         imagelabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         imagelabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/rsa-logo.png"))); // NOI18N
 
+        timeDisplayLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         timeDisplayLabel.setText("timeDisplay");
 
         dateDisplayLabel.setText("dateDisplayLabel");
@@ -104,26 +106,25 @@ public class HeadingPanel extends javax.swing.JPanel
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addComponent(imagelabel)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(dateDisplayLabel)
                 .addGap(18, 18, 18)
-                .addComponent(timeDisplayLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(dateDisplayLabel)
+                    .addComponent(timeDisplayLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(optionsjButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGap(22, 22, 22))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(imagelabel, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 6, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(dateDisplayLabel)
-                    .addComponent(timeDisplayLabel))
-                .addGap(22, 22, 22))
             .addComponent(optionsjButton, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(timeDisplayLabel)
+                        .addGap(3, 3, 3)
+                        .addComponent(dateDisplayLabel))
+                    .addComponent(imagelabel, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(0, 6, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 

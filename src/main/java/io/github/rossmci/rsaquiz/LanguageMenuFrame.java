@@ -193,7 +193,7 @@ public class LanguageMenuFrame extends javax.swing.JFrame
 		this.setVisible(false);
 		this.rsaQuiz.setLocale("en");
 		this.rsaQuiz.reloadLocaleResource();
-		this.rsaQuiz.getQuizFrame().setVisible(true);
+	    this.rsaQuiz.setQuizVisible(true);
     }//GEN-LAST:event_enToggleButtonActionPerformed
 
     private void ieToggleButtonActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_ieToggleButtonActionPerformed
@@ -201,8 +201,8 @@ public class LanguageMenuFrame extends javax.swing.JFrame
 		this.setVisible(false);
 		this.rsaQuiz.setLocale("ie");
 		this.rsaQuiz.reloadLocaleResource();
-		this.rsaQuiz.getQuizFrame().setVisible(true);
-		this.rsaQuiz.getQuizFrame().setLocale(rsaQuiz.getLocale());
+		this.rsaQuiz.setQuizVisible(true);
+//		this.rsaQuiz.getQuizFrame().setLocale(rsaQuiz.getLocale());
     }//GEN-LAST:event_ieToggleButtonActionPerformed
 
     private void frToggleButtonActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_frToggleButtonActionPerformed
@@ -210,8 +210,8 @@ public class LanguageMenuFrame extends javax.swing.JFrame
 		this.setVisible(false);
 		this.rsaQuiz.setLocale("fr");
 		this.rsaQuiz.reloadLocaleResource();
-		this.rsaQuiz.getQuizFrame().setVisible(true);
-		this.rsaQuiz.getQuizFrame().setLocale(rsaQuiz.getLocale());
+        this.rsaQuiz.setQuizVisible(true);
+//		this.rsaQuiz.getQuizFrame().setLocale(rsaQuiz.getLocale());
     }//GEN-LAST:event_frToggleButtonActionPerformed
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel TimeLabel;
