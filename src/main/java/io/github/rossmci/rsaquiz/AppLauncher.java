@@ -12,8 +12,7 @@ public class AppLauncher
 	 */
 	public static void main(String[] args)
 	{
-		RsaQuiz rsaQuiz = new RsaQuiz();
-		rsaQuiz.run();
+		//new RsaQuiz().run();
 		
 		new RsaQuizFrame().run();
 	}

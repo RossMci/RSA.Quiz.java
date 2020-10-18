@@ -9,7 +9,7 @@ package io.github.rossmci.rsaquiz;
  *
  * @author Ross Mcinerney
  */
-public class LoginPanel extends javax.swing.JPanel
+public class LoginPanel extends RsaQuizPanel
 {
 
 	/**
@@ -18,6 +18,11 @@ public class LoginPanel extends javax.swing.JPanel
 	public LoginPanel()
 	{
 		initComponents();
+	}
+
+	@Override
+	public void reloadLocaleResource()
+	{
 	}
 
 	/**
@@ -90,4 +95,5 @@ public class LoginPanel extends javax.swing.JPanel
     private javax.swing.JLabel userNamejLabel;
     private javax.swing.JTextField userNamejTextField;
     // End of variables declaration//GEN-END:variables
+
 }

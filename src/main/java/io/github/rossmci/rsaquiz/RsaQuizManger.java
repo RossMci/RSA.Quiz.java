@@ -14,6 +14,7 @@ import java.util.Locale;
 public interface RsaQuizManger extends Runnable
 {
 
+	//TODO Object getQuestions();
 	Locale getLocale();
 
 	void reloadLocaleResource();

@@ -1,41 +1,20 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package io.github.rossmci.rsaquiz;
 
 import java.util.ResourceBundle;
 
-/**
- *
- * @author Ross Mcinerney
- */
-public class UserFeedBackPanel extends javax.swing.JPanel
+public class UserFeedBackPanel extends RsaQuizPanel
 {
-
 	public UserFeedBackPanel()
 	{
-	    this.frames = ResourceBundle.getBundle("bundles/Frames");
+		frames = this.framesResourceBundle;
 		initComponents();
 	}
-	/**
-	 * Creates new form UserFeedBackPanel
-	 */
-	public UserFeedBackPanel(RsaQuiz rsaQuiz)
+	@Override
+	public void reloadLocaleResource()
 	{
-	    this.frames = ResourceBundle.getBundle("bundles/Frames", rsaQuiz.getLocale());
-		this.rsaQuiz = rsaQuiz;
-		initComponents();
+		this.framesResourceBundle = ResourceBundle.getBundle("bundles/Frames", this.getRsaQuizManger().getLocale());
 	}
 	
-	void reloadLocaleResource()
-	{
-		this.frames = ResourceBundle.getBundle("bundles/Frames", rsaQuiz.getLocale());
-
-	}
-	
-	private RsaQuiz rsaQuiz;
 	//declare and create your resource bundle
 	private ResourceBundle frames;
 

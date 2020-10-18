@@ -1,30 +1,40 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package io.github.rossmci.rsaquiz;
 
-/**
- *
- * @author Ross Mcinerney
- */
-public class SplashScreenPanel extends javax.swing.JPanel
+import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
+public class SplashScreenPanel extends RsaQuizPanel
 {
-	private RsaQuiz rsaQuiz;
-	/**
-	 * Creates new form SplashScreenPanel
-	 */
-	
+
 	public SplashScreenPanel()
 	{
 		initComponents();
 	}
-	public SplashScreenPanel(RsaQuiz rsaQuiz)
+
+	public void run()
 	{
-		this.rsaQuiz = rsaQuiz;
-		initComponents();
+		for (int i = 0; i <= 100; i++)
+		{
+			try
+			{
+				Thread.sleep(splashScreenSpeed);
+			}
+			catch (InterruptedException ex)
+			{
+				Logger.getLogger(AppLauncher.class.getName()).log(Level.SEVERE, null, ex);
+			}
+			percentjLabel.setText("" + i);
+			progressBar.setValue(i);
+		}
 	}
+
+	@Override
+	public void reloadLocaleResource()
+	{
+		this.framesResourceBundle = ResourceBundle.getBundle("bundles/Frames", this.getRsaQuizManger().getLocale());
+	}
+	private final int splashScreenSpeed = 6;//60
 
 	/**
 	 * This method is called from within the constructor to initialize the form.
@@ -37,19 +47,19 @@ public class SplashScreenPanel extends javax.swing.JPanel
     {
 
         jPanel1 = new javax.swing.JPanel();
-        ProgressBar = new javax.swing.JProgressBar();
-        PercentjLabel = new javax.swing.JLabel();
+        progressBar = new javax.swing.JProgressBar();
+        percentjLabel = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         gifLabel = new javax.swing.JLabel();
 
         jPanel1.setBackground(new java.awt.Color(204, 204, 255));
 
-        ProgressBar.setForeground(new java.awt.Color(255, 0, 0));
+        progressBar.setForeground(new java.awt.Color(255, 0, 0));
 
-        PercentjLabel.setFont(new java.awt.Font("Tahoma", 0, 36)); // NOI18N
-        PercentjLabel.setForeground(new java.awt.Color(255, 0, 0));
-        PercentjLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        PercentjLabel.setText("jLabel2");
+        percentjLabel.setFont(new java.awt.Font("Tahoma", 0, 36)); // NOI18N
+        percentjLabel.setForeground(new java.awt.Color(255, 0, 0));
+        percentjLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        percentjLabel.setText("jLabel2");
 
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/rsa-logo.png"))); // NOI18N
@@ -65,11 +75,11 @@ public class SplashScreenPanel extends javax.swing.JPanel
                 .addGap(10, 10, 10)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 660, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(ProgressBar, javax.swing.GroupLayout.PREFERRED_SIZE, 660, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(progressBar, javax.swing.GroupLayout.PREFERRED_SIZE, 660, javax.swing.GroupLayout.PREFERRED_SIZE)))
             .addComponent(gifLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 670, javax.swing.GroupLayout.PREFERRED_SIZE)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(PercentjLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 660, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(percentjLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 660, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
@@ -81,9 +91,9 @@ public class SplashScreenPanel extends javax.swing.JPanel
                         .addComponent(jLabel1))
                     .addComponent(gifLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 358, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(5, 5, 5)
-                .addComponent(PercentjLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(percentjLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(ProgressBar, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(progressBar, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
 
@@ -103,10 +113,11 @@ public class SplashScreenPanel extends javax.swing.JPanel
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    public static javax.swing.JLabel PercentjLabel;
-    public static javax.swing.JProgressBar ProgressBar;
-    public static javax.swing.JLabel gifLabel;
+    public javax.swing.JLabel gifLabel;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
+    public javax.swing.JLabel percentjLabel;
+    public javax.swing.JProgressBar progressBar;
     // End of variables declaration//GEN-END:variables
+
 }

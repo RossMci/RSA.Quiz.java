@@ -6,33 +6,18 @@ import java.util.ResourceBundle;
  *
  * @author Ross Mcinerney
  */
-public class LanguagePanel extends javax.swing.JPanel
+public class LanguagePanel extends RsaQuizPanel
 {
 
 	public LanguagePanel()
 	{
-		this.framesResourceBundle = ResourceBundle.getBundle("bundles/Frames");
 		initComponents();
 	}
 
-	public LanguagePanel(RsaQuiz rsaQuiz)
-	{
-		this.rsaQuiz = rsaQuiz;
-		this.framesResourceBundle = ResourceBundle.getBundle("bundles/Frames", rsaQuiz.getLocale());
-		initComponents();
-	}
-	public RsaQuiz getRsaQuiz()
-	{
-		return rsaQuiz;
-	}
-	public void setRsaQuiz(RsaQuiz rsaQuiz)
-	{
-		this.rsaQuiz = rsaQuiz;
-	}
-
+	@Override
 	public void reloadLocaleResource()
 	{
-		this.framesResourceBundle = ResourceBundle.getBundle("bundles/Frames", rsaQuiz.getLocale());
+		this.framesResourceBundle = ResourceBundle.getBundle("bundles/Frames", this.getRsaQuizManger().getLocale());
 
 		ieToggleButton.setToolTipText(framesResourceBundle.getString("LanguageMenu.ieToggleButton.toolTipText")); // NOI18N
 		enToggleButton.setToolTipText(framesResourceBundle.getString("LanguageMenu.enToggleButton.toolTipText")); // NOI18N
@@ -42,14 +27,10 @@ public class LanguagePanel extends javax.swing.JPanel
 	private void changeAppLocale(String locale)
 	{
 		this.setVisible(false);
-		this.rsaQuiz.setLocale(locale);
-		this.rsaQuiz.reloadLocaleResource();
-		this.rsaQuiz.setQuizVisible(true);
-//		this.rsaQuiz.getQuizFrame().setLocale(rsaQuiz.getLocale());
-		this.rsaQuiz.setLocale(locale);
+		this.getRsaQuizManger().setLocale(locale);
+		this.getRsaQuizManger().reloadLocaleResource();
+		this.getRsaQuizManger().setQuizVisible(true);
 	}
-	private ResourceBundle framesResourceBundle;
-	private RsaQuiz rsaQuiz;
 
 	/**
 	 * /**

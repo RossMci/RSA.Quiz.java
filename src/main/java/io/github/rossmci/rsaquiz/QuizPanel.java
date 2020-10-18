@@ -2,50 +2,21 @@ package io.github.rossmci.rsaquiz;
 
 import java.util.ResourceBundle;
 
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-/**
- *
- * @author Ross Mcinerney
- */
-public class QuizPanel extends javax.swing.JPanel
+public class QuizPanel extends RsaQuizPanel
 {
 
-	/**
-	 * Creates new form QuizJPanel
-	 */
+
 	public QuizPanel()
 	{
-		this.framesResourceBundle = ResourceBundle.getBundle("bundles/Frames");
 		initComponents();
 	}
 
-	public QuizPanel(RsaQuiz rsaQuiz)
-	{
-		this.rsaQuiz = rsaQuiz;
-		this.framesResourceBundle = ResourceBundle.getBundle("bundles/Frames", rsaQuiz.getLocale());
-		initComponents();
-	}
 
-	public RsaQuiz getRsaQuiz()
-	{
-		return rsaQuiz;
-	}
-
-	public void setRsaQuiz(RsaQuiz rsaQuiz)
-	{
-		this.rsaQuiz = rsaQuiz;
-	}
-
-	private ResourceBundle framesResourceBundle;
-	private RsaQuiz rsaQuiz;
 	
+	@Override
 	public void reloadLocaleResource()
 	{
-		this.framesResourceBundle = ResourceBundle.getBundle("bundles/Frames", rsaQuiz.getLocale());
+		this.framesResourceBundle = ResourceBundle.getBundle("bundles/Frames", this.getRsaQuizManger().getLocale());
         optionsToggleButton.setText(framesResourceBundle.getString("QuizFrame.optionsToggleButton.text")); // NOI18N
         StartToggleButton.setText(framesResourceBundle.getString("QuizFrame.startToggleButton.text")); // NOI18N
         InstructionLabel.setText(framesResourceBundle.getString("QuizFrame.instructionLabel.text")); // NOI18N
@@ -259,7 +230,7 @@ public class QuizPanel extends javax.swing.JPanel
 
     private void optionsToggleButtonActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_optionsToggleButtonActionPerformed
     {//GEN-HEADEREND:event_optionsToggleButtonActionPerformed
-		this.rsaQuiz.setLanguageMenuVisible(true);
+		this.getRsaQuizManger().setLanguageMenuVisible(true);
 		this.setVisible(false);
     }//GEN-LAST:event_optionsToggleButtonActionPerformed
 
