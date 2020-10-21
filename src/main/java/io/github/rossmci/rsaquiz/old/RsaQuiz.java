@@ -3,6 +3,8 @@ package io.github.rossmci.rsaquiz.old;
 import io.github.rossmci.rsaquiz.AppLauncher;
 import io.github.rossmci.rsaquiz.RsaQuizManger;
 import io.github.rossmci.rsaquiz.RsaSignQuestion;
+import io.github.rossmci.rsaquiz.User;
+import io.github.rossmci.rsaquiz.UserData;
 import java.util.List;
 import java.util.Locale;
 import java.util.logging.Level;
@@ -147,7 +149,32 @@ public class RsaQuiz implements RsaQuizManger
 	}
 
 	@Override
-	public List<RsaSignQuestion> getRsaSignQuestions()
+	public List<RsaSignQuestion> getRsaSignQuestionBank()
+	{
+		throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+	}
+
+
+	@Override
+	public void startQuiz()
+	{
+		throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+	}
+
+	@Override
+	public User getUser()
+	{
+		throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+	}
+
+	@Override
+	public void setUser(User user)
+	{
+		throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+	}
+
+	@Override
+	public UserData getUserData()
 	{
 		throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
 	}

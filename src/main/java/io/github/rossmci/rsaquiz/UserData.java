@@ -51,18 +51,35 @@ public class UserData
 	{
 		this.quizQuestionResult = quizQuestionResult;
 	}
-	
+
 	public void startQuiz()
 	{
 		for (int i = 0; i < quizQuestionResult.length; i++)
 		{
-			quizQuestionResult[i]=false;
+			quizQuestionResult[i] = false;
 		}
 		//creat an array
+		String[] allQuestion = new String[1];
 		//fill with for loop 0 to getRsaSignQuestion.size-1(offset by1)
+		for (int i = 0; i < allQuestion.length; i++)
+		{
+			allQuestion[i] = "";
+		}
 		//shuffle - link to studenbt quiz link repo
 		// filled with first 20of above array;
-		
+		for (int i = 0; i < quizQuestion.length; i++)
+		{
+			quizQuestion[i] = 1;
+		}
 		// fill the buttons in a random order
+	}
+
+	public void setImageQuestion()
+	{
+
+	}
+	
+	public void correctQuestion()
+	{
 	}
 }

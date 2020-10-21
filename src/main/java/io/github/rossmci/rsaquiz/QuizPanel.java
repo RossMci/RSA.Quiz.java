@@ -226,8 +226,9 @@ public class QuizPanel extends RsaQuizPanel
 	int currentIndex = 0;
     private void StartToggleButtonActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_StartToggleButtonActionPerformed
     {//GEN-HEADEREND:event_StartToggleButtonActionPerformed
-		var question = this.getRsaQuizManger().getRsaSignQuestions().get(currentIndex++);
+		var question = this.getRsaQuizManger().getRsaSignQuestionBank().get(currentIndex++);
 		loadQuestion(question);
+		
     }//GEN-LAST:event_StartToggleButtonActionPerformed
 
     private void optionsToggleButtonActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_optionsToggleButtonActionPerformed
@@ -257,6 +258,6 @@ public class QuizPanel extends RsaQuizPanel
 	private void loadQuestion(RsaSignQuestion question)
 	{
 		this.QuestionLabel.setText(question.getImageName());
-		this.pic3Button.setIcon(new javax.swing.ImageIcon(question.getPath())); // NOI18N
+		this.pic3Button.setIcon(new javax.swing.ImageIcon(question.getPath()));// NOI18N
 	}
 }
