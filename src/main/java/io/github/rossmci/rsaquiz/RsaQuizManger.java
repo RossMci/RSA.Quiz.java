@@ -1,20 +1,14 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package io.github.rossmci.rsaquiz;
 
+import java.util.List;
 import java.util.Locale;
 
-/**
- *
- * @author Ross Mcinerney
- */
 public interface RsaQuizManger extends Runnable
 {
+	//TODO: Object UserData
 
-	//TODO Object getQuestions();
+	List<RsaSignQuestion>  getRsaSignQuestions();
+	
 	Locale getLocale();
 
 	void reloadLocaleResource();

@@ -1,32 +1,23 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package io.github.rossmci.rsaquiz;
 
-/**
- *
- * @author alan.ryan
- */
-public class RSAImage {
+public class RsaSignQuestion {
     
     private String imageName;
     private String category;
     private String path;
 
-    public RSAImage() {
+    public RsaSignQuestion() {
     }
 
-    public RSAImage(String imageName, String category, String path) {
+    public RsaSignQuestion(String imageName, String category, String path) {
         this.imageName = imageName;
         this.category = category;
         this.path = path;
     }
 
-    /**
-     * @return the imageName
-     */
+	/**
+	 * @return the imageName
+	 */
     public String getImageName() {
         return imageName;
     }

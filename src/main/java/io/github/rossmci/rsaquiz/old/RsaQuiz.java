@@ -2,6 +2,8 @@ package io.github.rossmci.rsaquiz.old;
 
 import io.github.rossmci.rsaquiz.AppLauncher;
 import io.github.rossmci.rsaquiz.RsaQuizManger;
+import io.github.rossmci.rsaquiz.RsaSignQuestion;
+import java.util.List;
 import java.util.Locale;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -142,5 +144,11 @@ public class RsaQuiz implements RsaQuizManger
 	public void setSplashScreenVisible(boolean visible)
 	{
 		this.splashScreenFrame.setVisible(visible);
+	}
+
+	@Override
+	public List<RsaSignQuestion> getRsaSignQuestions()
+	{
+		throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
 	}
 }

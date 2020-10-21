@@ -5,7 +5,12 @@
  */
 package io.github.rossmci.rsaquiz;
 
+import java.io.IOException;
+import java.net.URISyntaxException;
+import java.util.List;
 import java.util.Locale;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -93,7 +98,7 @@ public class RsaQuizFrame extends javax.swing.JFrame implements RsaQuizManger
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         headingPanel1.setMaximumSize(new java.awt.Dimension(33267, 549));
-        getContentPane().add(headingPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 2645, -1));
+        getContentPane().add(headingPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 880, -1));
         getContentPane().add(splashScreenPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
         getContentPane().add(languagePanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 54, -1, -1));
         getContentPane().add(quizPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 54, 499, -1));
@@ -122,7 +127,7 @@ public class RsaQuizFrame extends javax.swing.JFrame implements RsaQuizManger
 				panel.reloadLocaleResource();
 			}
 		}
-		//TODO this.loadQuestions(locale);
+		this.loadQuestions(locale);
 	}
 
 	@Override
@@ -148,5 +153,33 @@ public class RsaQuizFrame extends javax.swing.JFrame implements RsaQuizManger
 	{
 		this.splashScreenPanel1.setVisible(visible);
 	}
+	public List<RsaSignQuestion> rsaSignQuestions;
 
+	@Override
+	public List<RsaSignQuestion> getRsaSignQuestions()
+	{
+		return rsaSignQuestions;
+	}
+
+	public void setRsaSignQuestions(List<RsaSignQuestion> rsaSignQuestions)
+	{
+		this.rsaSignQuestions = rsaSignQuestions;
+	}
+
+	private void loadQuestions(Locale locale)
+	{
+		String directoryContextPath = "signs";
+		try
+		{
+			this.rsaSignQuestions= RsaSignQuestionRepository.getAll(directoryContextPath, true);
+		}
+		catch (IOException ex)
+		{
+			Logger.getLogger(RsaQuizFrame.class.getName()).log(Level.SEVERE, null, ex);
+		}
+		catch (URISyntaxException ex)
+		{
+			Logger.getLogger(RsaQuizFrame.class.getName()).log(Level.SEVERE, null, ex);
+		}
+	}
 }
