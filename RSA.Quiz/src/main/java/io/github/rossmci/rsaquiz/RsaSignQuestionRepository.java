@@ -19,6 +19,7 @@ public class RsaSignQuestionRepository
 			if (file.isFile())
 			{
 				RsaSignQuestion image = new RsaSignQuestion();
+				image.setIndex(resultList.size());
 				image.setCategory(directory.getName());
 				image.setPath(file.getCanonicalPath());
 				image.setImageName(file.getName());
@@ -44,7 +45,6 @@ public class RsaSignQuestionRepository
 		File directory = new File(filePath);
 
 		return RsaSignQuestionRepository.getAll(directory, descendIntoSubDirectories);
-
 	}
 
 	public static void main(String[] args) throws IOException, URISyntaxException
