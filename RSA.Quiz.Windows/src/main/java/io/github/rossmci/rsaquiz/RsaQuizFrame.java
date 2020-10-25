@@ -14,6 +14,7 @@ public class RsaQuizFrame extends javax.swing.JFrame implements RsaQuizManger
 	{
 		initComponents();
 		//panels[1] = this.headingPanel1;
+		
 
 		panels[0] = this.languagePanel1;
 		panels[1] = this.splashScreenPanel1;
@@ -148,13 +149,21 @@ public class RsaQuizFrame extends javax.swing.JFrame implements RsaQuizManger
 	@Override
 	public UserData getUserData()
 	{
-		throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+		return this.user.getUserData();
 	}
 
 	@Override
 	public void startQuiz()
 	{
-		throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+		try
+		{
+			//TODO : final variable for quizSize
+			this.user.getUserData().startQuiz();
+		}
+		catch (Exception ex)
+		{
+			Logger.getLogger(RsaQuizFrame.class.getName()).log(Level.SEVERE, null, ex);
+		}
 	}
 	//
 	//	Fields

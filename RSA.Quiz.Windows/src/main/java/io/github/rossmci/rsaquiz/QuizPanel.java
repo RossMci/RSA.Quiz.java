@@ -1,26 +1,31 @@
 package io.github.rossmci.rsaquiz;
 
 import java.util.ResourceBundle;
+import javax.swing.JToggleButton;
+
 
 public class QuizPanel extends RsaQuizPanel
 {
 
-
 	public QuizPanel()
 	{
 		initComponents();
+		buttons = new JToggleButton[]
+		{
+			pic1ToggleButton,
+			pic2ToggleButton,
+			pic3Button
+		};
 	}
 
-
-	
 	@Override
 	public void reloadLocaleResource()
 	{
 		this.framesResourceBundle = ResourceBundle.getBundle("bundles/Frames", this.getRsaQuizManger().getLocale());
-        optionsToggleButton.setText(framesResourceBundle.getString("QuizFrame.optionsToggleButton.text")); // NOI18N
-        StartToggleButton.setText(framesResourceBundle.getString("QuizFrame.startToggleButton.text")); // NOI18N
-        InstructionLabel.setText(framesResourceBundle.getString("QuizFrame.instructionLabel.text")); // NOI18N
-		
+		optionsToggleButton.setText(framesResourceBundle.getString("QuizFrame.optionsToggleButton.text")); // NOI18N
+		StartToggleButton.setText(framesResourceBundle.getString("QuizFrame.startToggleButton.text")); // NOI18N
+		InstructionLabel.setText(framesResourceBundle.getString("QuizFrame.instructionLabel.text")); // NOI18N
+
 		//TODO:this.TimeLabel.setText(date.tosTring(rsaQuiz.getLocale()));
 //	      DateFormat formatter = DateFormat.getDateTimeInstance(DateFormat.SHORT, DateFormat.SHORT, rsaQuiz.getLocale());
 //		  TimeLabel.setText(formatter.format(cal.getTime()));
@@ -68,16 +73,37 @@ public class QuizPanel extends RsaQuizPanel
         pic3Button.setForeground(new java.awt.Color(255, 255, 255));
         pic3Button.setIcon(new javax.swing.ImageIcon(getClass().getResource("/signs/info_signs/Airport.gif"))); // NOI18N
         pic3Button.setBorder(null);
+        pic3Button.addMouseListener(new java.awt.event.MouseAdapter()
+        {
+            public void mouseClicked(java.awt.event.MouseEvent evt)
+            {
+                pic3ButtonMouseClicked(evt);
+            }
+        });
 
         pic1ToggleButton.setBackground(new java.awt.Color(255, 255, 255));
         pic1ToggleButton.setForeground(new java.awt.Color(255, 255, 255));
         pic1ToggleButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/signs/tourist_signs/Oige youth hostels.gif"))); // NOI18N
         pic1ToggleButton.setBorder(null);
+        pic1ToggleButton.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
+                pic1ToggleButtonActionPerformed(evt);
+            }
+        });
 
         pic2ToggleButton.setBackground(new java.awt.Color(255, 255, 255));
         pic2ToggleButton.setForeground(new java.awt.Color(255, 255, 255));
         pic2ToggleButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/signs/regulatory_signs/Bus only street.gif"))); // NOI18N
         pic2ToggleButton.setBorder(null);
+        pic2ToggleButton.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
+                pic2ToggleButtonActionPerformed(evt);
+            }
+        });
 
         InstructionLabel.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         InstructionLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -228,7 +254,7 @@ public class QuizPanel extends RsaQuizPanel
     {//GEN-HEADEREND:event_StartToggleButtonActionPerformed
 		var question = this.getRsaQuizManger().getRsaSignQuestionBank().get(currentIndex++);
 		loadQuestion(question);
-		
+
     }//GEN-LAST:event_StartToggleButtonActionPerformed
 
     private void optionsToggleButtonActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_optionsToggleButtonActionPerformed
@@ -236,6 +262,21 @@ public class QuizPanel extends RsaQuizPanel
 		this.getRsaQuizManger().setLanguageMenuVisible(true);
 		this.setVisible(false);
     }//GEN-LAST:event_optionsToggleButtonActionPerformed
+
+    private void pic1ToggleButtonActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_pic1ToggleButtonActionPerformed
+    {//GEN-HEADEREND:event_pic1ToggleButtonActionPerformed
+		checkAnswer(this.pic1ToggleButton);
+    }//GEN-LAST:event_pic1ToggleButtonActionPerformed
+
+    private void pic2ToggleButtonActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_pic2ToggleButtonActionPerformed
+    {//GEN-HEADEREND:event_pic2ToggleButtonActionPerformed
+		// TODO add your handling code here:
+    }//GEN-LAST:event_pic2ToggleButtonActionPerformed
+
+    private void pic3ButtonMouseClicked(java.awt.event.MouseEvent evt)//GEN-FIRST:event_pic3ButtonMouseClicked
+    {//GEN-HEADEREND:event_pic3ButtonMouseClicked
+		// TODO add your handling code here:
+    }//GEN-LAST:event_pic3ButtonMouseClicked
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -258,6 +299,29 @@ public class QuizPanel extends RsaQuizPanel
 	private void loadQuestion(RsaSignQuestion question)
 	{
 		this.QuestionLabel.setText(question.getImageName());
+		int[] threeOptions =
+		{
+			0, 1, 2
+		};
+		Stackoverflow.fisherYatesShuffleArray(threeOptions);
+		correctIndex = threeOptions[0];
+		buttons[threeOptions[0]].setIcon(new javax.swing.ImageIcon(question.getPath()));
+		buttons[threeOptions[1]].setIcon(new javax.swing.ImageIcon(question.getPath()));// NOI18N
+		buttons[threeOptions[2]].setIcon(new javax.swing.ImageIcon(question.getPath()));// NOI18N
 		this.pic3Button.setIcon(new javax.swing.ImageIcon(question.getPath()));// NOI18N
+
+		// fill the buttons in a random order
+	}
+	int correctIndex;
+	final JToggleButton[] buttons;
+
+	private void checkAnswer(JToggleButton pic1ToggleButton)
+	{
+		if (buttons[correctIndex] == pic1ToggleButton)
+		{//Correct;;
+		}
+		else
+		{
+		}
 	}
 }
