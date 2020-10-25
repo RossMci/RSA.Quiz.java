@@ -36,20 +36,6 @@ public class RsaQuizBuilderTest
 		fail("The test case is a prototype.");
 	}
 
-	/**
-	 * Test of buildQuiz1 method, of class RsaQuizBuilder.
-	 */
-	@org.junit.Test
-	public void testBuildQuiz1() throws Exception
-	{
-		System.out.println("buildQuiz1");
-		RsaQuizBuilder instance = new RsaQuizBuilder();
-		List<RsaSignQuestion> expResult = null;
-		List<RsaSignQuestion> result = instance.buildQuiz1();
-		assertEquals(expResult, result);
-		// TODO review the generated test code and remove the default call to fail.
-		fail("The test case is a prototype.");
-	}
 
 	/**
 	 * Test of generateRandomWrongAnswers method, of class RsaQuizBuilder.

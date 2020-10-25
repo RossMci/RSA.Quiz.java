@@ -3,7 +3,7 @@ package io.github.rossmci.rsaquiz;
 import static io.github.rossmci.rsaquiz.RsaSignQuestionRepository.getAll;
 import java.io.IOException;
 import java.net.URISyntaxException;
-import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.Random;
 
@@ -55,15 +55,16 @@ public class RsaQuizBuilder
 		return rsaSignQuestionList;
 	}
 
-	public List<RsaSignQuestion> buildQuiz1() throws IOException, URISyntaxException
+	public List<RsaSignQuestion> buildQuiz(int numberOfQuestions) throws IOException, URISyntaxException
 	{
-		ArrayList<RsaSignQuestion> QuizBank = new ArrayList<>();
-		String directoryContextPath = "signs";
-		var imgList = getAll(directoryContextPath, true);
-		imgList.forEach(rsaImage -> QuizBank.add(rsaImage));
+		List<RsaSignQuestion> rsaSignQuestionList = buildQuestions();
 
-		return null;
-//TODO:  Build N questions for a user
+		//TODO: maybe clone list first;
+		Collections.shuffle(rsaSignQuestionList);
+		
+		List<RsaSignQuestion> quiz = rsaSignQuestionList.subList(0, numberOfQuestions-1);
+		
+		return quiz;
 	}
 
 	public static void generateRandomWrongAnswers(List<RsaSignQuestion> rsaSignQuestionList)

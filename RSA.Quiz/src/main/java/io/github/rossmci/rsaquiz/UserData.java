@@ -1,5 +1,7 @@
 package io.github.rossmci.rsaquiz;
 
+import java.util.List;
+
 /**
  *
  * @author Ross Mcinerney
@@ -9,7 +11,7 @@ public class UserData
 
 	Object user;
 	int testSize = 20;
-	int[] quizQuestion = new int[testSize];
+	List<RsaSignQuestion> quizQuestions;
 	boolean[] quizQuestionResult = new boolean[testSize];// fill loop all false to begin
 
 	public Object getUser()
@@ -32,14 +34,14 @@ public class UserData
 		this.testSize = testSize;
 	}
 
-	public int[] getQuizQuestion()
+	public List<RsaSignQuestion> getQuizQuestions()
 	{
-		return quizQuestion;
+		return quizQuestions;
 	}
 
-	public void setQuizQuestion(int[] quizQuestion)
+	public void setQuizQuestions(List<RsaSignQuestion> quizQuestions)
 	{
-		this.quizQuestion = quizQuestion;
+		this.quizQuestions = quizQuestions;
 	}
 
 	public boolean[] getQuizQuestionResult()
@@ -52,27 +54,21 @@ public class UserData
 		this.quizQuestionResult = quizQuestionResult;
 	}
 
-	public void startQuiz()
+	public void startQuiz() throws Exception
 	{
+		this.quizQuestions = new RsaQuizBuilder().buildQuiz(this.testSize);
+
+		
 		for (int i = 0; i < quizQuestionResult.length; i++)
 		{
 			quizQuestionResult[i] = false;
 		}
-		//creat an array
-		String[] allQuestion;
-		//fill with for loop 0 to getRsaSignQuestion.size-1(offset by1)
-//		for (int i = 0; i < allQuestion.length - 1; i++)
-//		{
-//			allQuestion[i] = "";
-//		}
-		//shuffle - link to studenbt quiz link repo
-
-		// filled with first 20of above array;
-		for (int i = 0; i < quizQuestion.length; i++)
+		
+		//TODO Tried/Atttempted
+		for (int i = 0; i < quizQuestionResult.length; i++)
 		{
-			quizQuestion[i] = 1;
+			quizQuestionResult[i] = false;
 		}
-		// fill the buttons in a random order
 	}
 
 
