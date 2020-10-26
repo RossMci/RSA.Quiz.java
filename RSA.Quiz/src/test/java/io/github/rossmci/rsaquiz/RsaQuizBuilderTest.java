@@ -24,7 +24,6 @@ public class RsaQuizBuilderTest
 	/**
 	 * Test of buildQuestions method, of class RsaQuizBuilder.
 	 */
-	@org.junit.Test
 	public void testBuildQuestions() throws Exception
 	{
 		System.out.println("buildQuestions");
@@ -40,7 +39,6 @@ public class RsaQuizBuilderTest
 	/**
 	 * Test of generateRandomWrongAnswers method, of class RsaQuizBuilder.
 	 */
-	@org.junit.Test
 	public void testGenerateRandomWrongAnswers_List()
 	{
 		System.out.println("generateRandomWrongAnswers");
@@ -55,7 +53,6 @@ public class RsaQuizBuilderTest
 	 *
 	 * @throws java.lang.Exception
 	 */
-	@org.junit.Test
 	public void testGenerateRandomWrongAnswers_RsaSignQuestion_List() throws Exception
 	{
 		System.out.println("generateRandomWrongAnswers");

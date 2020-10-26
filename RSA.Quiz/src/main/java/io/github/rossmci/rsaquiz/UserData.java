@@ -9,19 +9,33 @@ import java.util.List;
 public class UserData
 {
 
-	Object user;
-	int testSize = 20;
-	List<RsaSignQuestion> quizQuestions;
-	boolean[] quizQuestionResult = new boolean[testSize];// fill loop all false to begin
+	private int testSize = 20;
+	private List<RsaSignQuestion> quizQuestions;
+	private boolean[] userQuizResults = new boolean[testSize];// fill loop all false to begin
+	private boolean[] questionsAnswered = new boolean[testSize];// fill loop all false to begin
 
-	public Object getUser()
+	public boolean[] getQuestionsAnswered()
 	{
-		return user;
+		return questionsAnswered;
 	}
 
-	public void setUser(Object user)
+	public void setQuestionsAnswered(boolean[] questionsAnswered)
 	{
-		this.user = user;
+		this.questionsAnswered = questionsAnswered;
+	}
+
+	public int getScore()
+	{
+		int score = 0;
+		for (int index = 0; index < userQuizResults.length; index++)
+		{
+			if (userQuizResults[index])
+			{
+				score++;
+			}
+
+		}
+		return score;
 	}
 
 	public int getTestSize()
@@ -44,41 +58,27 @@ public class UserData
 		this.quizQuestions = quizQuestions;
 	}
 
-	public boolean[] getQuizQuestionResult()
+	public boolean[] getUserQuizResults()
 	{
-		return quizQuestionResult;
+		return userQuizResults;
 	}
 
-	public void setQuizQuestionResult(boolean[] quizQuestionResult)
+	public void setUserQuizResults(boolean[] userQuizResults)
 	{
-		this.quizQuestionResult = quizQuestionResult;
+		this.userQuizResults = userQuizResults;
 	}
 
 	public void startQuiz() throws Exception
 	{
 		this.quizQuestions = new RsaQuizBuilder().buildQuiz(this.testSize);
 
-		
-		for (int i = 0; i < quizQuestionResult.length; i++)
+		for (int i = 0; i < userQuizResults.length; i++)
 		{
-			quizQuestionResult[i] = false;
+			userQuizResults[i] = false;
 		}
-		
-		//TODO Tried/Atttempted
-		boolean[] questionsAnswered=new boolean[testSize];
-		for (int i = 0; i < quizQuestionResult.length; i++)
+		for (int i = 0; i < questionsAnswered.length; i++)
 		{
-			quizQuestionResult[i] = false;
+			questionsAnswered[i] = false;
 		}
-	}
-
-
-	public void setImageQuestion()
-	{
-
-	}
-
-	public void correctQuestion()
-	{
 	}
 }
