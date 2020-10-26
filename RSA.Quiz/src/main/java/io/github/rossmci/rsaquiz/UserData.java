@@ -65,6 +65,7 @@ public class UserData
 		}
 		
 		//TODO Tried/Atttempted
+		boolean[] questionsAnswered=new boolean[testSize];
 		for (int i = 0; i < quizQuestionResult.length; i++)
 		{
 			quizQuestionResult[i] = false;
