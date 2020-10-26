@@ -13,10 +13,10 @@ import javax.swing.Timer;
 public class HeadingPanel extends javax.swing.JPanel
 {
 
-	public void clock()
+	public void initClock()
 	{
-		Timer t = new Timer(1000, updateClockAction);
-		t.start();
+		Timer timer = new Timer(1000, updateClockAction);
+		timer.start();
 
 	}
 
@@ -36,7 +36,7 @@ public class HeadingPanel extends javax.swing.JPanel
 	{
 		this.framesResourceBundle = ResourceBundle.getBundle("bundles/Frames");
 		initComponents();
-		clock();
+		initClock();
 	}
 
 	public HeadingPanel(RsaQuizManger rsaQuiz)
@@ -44,7 +44,7 @@ public class HeadingPanel extends javax.swing.JPanel
 		this.rsaQuiz = rsaQuiz;
 		this.framesResourceBundle = ResourceBundle.getBundle("bundles/Frames", rsaQuiz.getLocale());
 		initComponents();
-		clock();
+		initClock();
 	}
 
 	public RsaQuizManger getRsaQuiz()
