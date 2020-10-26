@@ -3,7 +3,6 @@ package io.github.rossmci.rsaquiz;
 import java.util.ResourceBundle;
 import javax.swing.JToggleButton;
 
-
 public class QuizPanel extends RsaQuizPanel
 {
 
@@ -252,10 +251,10 @@ public class QuizPanel extends RsaQuizPanel
 	int currentIndex = 0;
     private void StartToggleButtonActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_StartToggleButtonActionPerformed
     {//GEN-HEADEREND:event_StartToggleButtonActionPerformed
-		var question = this.getRsaQuizManger().getRsaSignQuestionBank().get(currentIndex++);
-		var question2 = this.getRsaQuizManger().getRsaSignQuestionBank().get(currentIndex++);
-		var question3 = this.getRsaQuizManger().getRsaSignQuestionBank().get(currentIndex++);
-		loadQuestion(question,question2,question3);
+//		var question = this.getRsaQuizManger().getRsaSignQuestionBank().get(currentIndex++);
+//		var question2 = this.getRsaQuizManger().getRsaSignQuestionBank().get(currentIndex++);
+//		var question3 = this.getRsaQuizManger().getRsaSignQuestionBank().get(currentIndex++);
+		loadQuestion();
 
     }//GEN-LAST:event_StartToggleButtonActionPerformed
 
@@ -269,13 +268,15 @@ public class QuizPanel extends RsaQuizPanel
     {//GEN-HEADEREND:event_pic1ToggleButtonActionPerformed
 		checkAnswer(this.pic1ToggleButton);
 		System.out.println("pic1ToggleButton");
+		loadQuestion();
     }//GEN-LAST:event_pic1ToggleButtonActionPerformed
 
     private void pic2ToggleButtonActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_pic2ToggleButtonActionPerformed
     {//GEN-HEADEREND:event_pic2ToggleButtonActionPerformed
 		// TODO add your handling code here:
-			checkAnswer(this.pic2ToggleButton);
-				System.out.println("pic2ToggleButton");
+		checkAnswer(this.pic2ToggleButton);
+		System.out.println("pic2ToggleButton");
+		loadQuestion();
     }//GEN-LAST:event_pic2ToggleButtonActionPerformed
 
     private void pic3ButtonMouseClicked(java.awt.event.MouseEvent evt)//GEN-FIRST:event_pic3ButtonMouseClicked
@@ -283,6 +284,7 @@ public class QuizPanel extends RsaQuizPanel
 		// TODO add your handling code here:
 		checkAnswer(this.pic3Button);
 		System.out.println("pic3Button");
+		loadQuestion();
     }//GEN-LAST:event_pic3ButtonMouseClicked
 
 
@@ -303,8 +305,11 @@ public class QuizPanel extends RsaQuizPanel
     private javax.swing.JToggleButton pic3Button;
     // End of variables declaration//GEN-END:variables
 
-	private void loadQuestion(RsaSignQuestion question,RsaSignQuestion question2,RsaSignQuestion question3)
+	private void loadQuestion()
 	{
+		var question = this.getRsaQuizManger().getRsaSignQuestionBank().get(currentIndex++);
+		var question2 = this.getRsaQuizManger().getRsaSignQuestionBank().get(currentIndex++);
+		var question3 = this.getRsaQuizManger().getRsaSignQuestionBank().get(currentIndex++);
 		this.QuestionLabel.setText(question.getImageName());
 		int[] threeOptions =
 		{
@@ -325,7 +330,7 @@ public class QuizPanel extends RsaQuizPanel
 	private void checkAnswer(JToggleButton pic1ToggleButton)
 	{
 		System.out.println(correctIndex);
-		
+
 		if (buttons[correctIndex] == pic1ToggleButton)
 		{//Correct;;
 			System.out.println("Right");
