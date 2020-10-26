@@ -253,7 +253,9 @@ public class QuizPanel extends RsaQuizPanel
     private void StartToggleButtonActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_StartToggleButtonActionPerformed
     {//GEN-HEADEREND:event_StartToggleButtonActionPerformed
 		var question = this.getRsaQuizManger().getRsaSignQuestionBank().get(currentIndex++);
-		loadQuestion(question);
+		var question2 = this.getRsaQuizManger().getRsaSignQuestionBank().get(currentIndex++);
+		var question3 = this.getRsaQuizManger().getRsaSignQuestionBank().get(currentIndex++);
+		loadQuestion(question,question2,question3);
 
     }//GEN-LAST:event_StartToggleButtonActionPerformed
 
@@ -266,16 +268,21 @@ public class QuizPanel extends RsaQuizPanel
     private void pic1ToggleButtonActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_pic1ToggleButtonActionPerformed
     {//GEN-HEADEREND:event_pic1ToggleButtonActionPerformed
 		checkAnswer(this.pic1ToggleButton);
+		System.out.println("pic1ToggleButton");
     }//GEN-LAST:event_pic1ToggleButtonActionPerformed
 
     private void pic2ToggleButtonActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_pic2ToggleButtonActionPerformed
     {//GEN-HEADEREND:event_pic2ToggleButtonActionPerformed
 		// TODO add your handling code here:
+			checkAnswer(this.pic2ToggleButton);
+				System.out.println("pic2ToggleButton");
     }//GEN-LAST:event_pic2ToggleButtonActionPerformed
 
     private void pic3ButtonMouseClicked(java.awt.event.MouseEvent evt)//GEN-FIRST:event_pic3ButtonMouseClicked
     {//GEN-HEADEREND:event_pic3ButtonMouseClicked
 		// TODO add your handling code here:
+		checkAnswer(this.pic3Button);
+		System.out.println("pic3Button");
     }//GEN-LAST:event_pic3ButtonMouseClicked
 
 
@@ -296,7 +303,7 @@ public class QuizPanel extends RsaQuizPanel
     private javax.swing.JToggleButton pic3Button;
     // End of variables declaration//GEN-END:variables
 
-	private void loadQuestion(RsaSignQuestion question)
+	private void loadQuestion(RsaSignQuestion question,RsaSignQuestion question2,RsaSignQuestion question3)
 	{
 		this.QuestionLabel.setText(question.getImageName());
 		int[] threeOptions =
@@ -306,9 +313,9 @@ public class QuizPanel extends RsaQuizPanel
 		Stackoverflow.fisherYatesShuffleArray(threeOptions);
 		correctIndex = threeOptions[0];
 		buttons[threeOptions[0]].setIcon(new javax.swing.ImageIcon(question.getPath()));
-		buttons[threeOptions[1]].setIcon(new javax.swing.ImageIcon(question.getPath()));// NOI18N
-		buttons[threeOptions[2]].setIcon(new javax.swing.ImageIcon(question.getPath()));// NOI18N
-		this.pic3Button.setIcon(new javax.swing.ImageIcon(question.getPath()));// NOI18N
+		buttons[threeOptions[1]].setIcon(new javax.swing.ImageIcon(question2.getPath()));// NOI18N
+		buttons[threeOptions[2]].setIcon(new javax.swing.ImageIcon(question3.getPath()));// NOI18N
+//		this.pic3Button.setIcon(new javax.swing.ImageIcon(question.getPath()));// NOI18N
 
 		// fill the buttons in a random order
 	}
@@ -317,11 +324,15 @@ public class QuizPanel extends RsaQuizPanel
 
 	private void checkAnswer(JToggleButton pic1ToggleButton)
 	{
+		System.out.println(correctIndex);
+		
 		if (buttons[correctIndex] == pic1ToggleButton)
 		{//Correct;;
+			System.out.println("Right");
 		}
 		else
 		{
+			System.out.println("Wrong");
 		}
 	}
 }
