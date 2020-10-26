@@ -11,7 +11,7 @@ public class QuizPanel extends RsaQuizPanel
 		initComponents();
 		buttons = new JToggleButton[]
 		{
-			pic1ToggleButton,
+			option1ToggleButton,
 			pic2ToggleButton,
 			pic3Button
 		};
@@ -21,8 +21,8 @@ public class QuizPanel extends RsaQuizPanel
 	public void reloadLocaleResource()
 	{
 		this.framesResourceBundle = ResourceBundle.getBundle("bundles/Frames", this.getRsaQuizManger().getLocale());
-		optionsToggleButton.setText(framesResourceBundle.getString("QuizFrame.optionsToggleButton.text")); // NOI18N
-		StartToggleButton.setText(framesResourceBundle.getString("QuizFrame.startToggleButton.text")); // NOI18N
+		backToggleButton.setText(framesResourceBundle.getString("QuizFrame.optionsToggleButton.text")); // NOI18N
+		nextToggleButton.setText(framesResourceBundle.getString("QuizFrame.startToggleButton.text")); // NOI18N
 		InstructionLabel.setText(framesResourceBundle.getString("QuizFrame.instructionLabel.text")); // NOI18N
 
 		//TODO:this.TimeLabel.setText(date.tosTring(rsaQuiz.getLocale()));
@@ -45,15 +45,16 @@ public class QuizPanel extends RsaQuizPanel
         TimeLabel = new javax.swing.JLabel();
         PictureQuestionPanel = new javax.swing.JPanel();
         pic3Button = new javax.swing.JToggleButton();
-        pic1ToggleButton = new javax.swing.JToggleButton();
+        option1ToggleButton = new javax.swing.JToggleButton();
         pic2ToggleButton = new javax.swing.JToggleButton();
         InstructionLabel = new javax.swing.JLabel();
         QuestionLabel = new javax.swing.JLabel();
         SymbolLabel = new javax.swing.JLabel();
         MaxLabel = new javax.swing.JLabel();
         counterLabel = new javax.swing.JLabel();
-        StartToggleButton = new javax.swing.JToggleButton();
-        optionsToggleButton = new javax.swing.JToggleButton();
+        nextToggleButton = new javax.swing.JToggleButton();
+        backToggleButton = new javax.swing.JToggleButton();
+        SubmitAnswerToggleButton1 = new javax.swing.JToggleButton();
 
         mainPanel.setBackground(new java.awt.Color(255, 51, 51));
 
@@ -80,15 +81,15 @@ public class QuizPanel extends RsaQuizPanel
             }
         });
 
-        pic1ToggleButton.setBackground(new java.awt.Color(255, 255, 255));
-        pic1ToggleButton.setForeground(new java.awt.Color(255, 255, 255));
-        pic1ToggleButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/signs/tourist_signs/Oige youth hostels.gif"))); // NOI18N
-        pic1ToggleButton.setBorder(null);
-        pic1ToggleButton.addActionListener(new java.awt.event.ActionListener()
+        option1ToggleButton.setBackground(new java.awt.Color(255, 255, 255));
+        option1ToggleButton.setForeground(new java.awt.Color(255, 255, 255));
+        option1ToggleButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/signs/tourist_signs/Oige youth hostels.gif"))); // NOI18N
+        option1ToggleButton.setBorder(null);
+        option1ToggleButton.addActionListener(new java.awt.event.ActionListener()
         {
             public void actionPerformed(java.awt.event.ActionEvent evt)
             {
-                pic1ToggleButtonActionPerformed(evt);
+                option1ToggleButtonActionPerformed(evt);
             }
         });
 
@@ -113,7 +114,7 @@ public class QuizPanel extends RsaQuizPanel
         PictureQuestionPanelLayout.setHorizontalGroup(
             PictureQuestionPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(PictureQuestionPanelLayout.createSequentialGroup()
-                .addComponent(pic1ToggleButton)
+                .addComponent(option1ToggleButton)
                 .addGap(0, 0, 0)
                 .addComponent(pic2ToggleButton, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0)
@@ -131,7 +132,7 @@ public class QuizPanel extends RsaQuizPanel
                     .addGroup(PictureQuestionPanelLayout.createSequentialGroup()
                         .addGroup(PictureQuestionPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                             .addComponent(pic2ToggleButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(pic1ToggleButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addComponent(option1ToggleButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addGap(0, 5, Short.MAX_VALUE))
                     .addComponent(pic3Button, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
         );
@@ -157,29 +158,43 @@ public class QuizPanel extends RsaQuizPanel
         counterLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         counterLabel.setText("1"); // NOI18N
 
-        StartToggleButton.setBackground(new java.awt.Color(0, 0, 0));
-        StartToggleButton.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        StartToggleButton.setForeground(new java.awt.Color(255, 255, 255));
-        StartToggleButton.setText(framesResourceBundle.getString("QuizFrame.startToggleButton.text")); // NOI18N
-        StartToggleButton.setBorder(null);
-        StartToggleButton.addActionListener(new java.awt.event.ActionListener()
+        nextToggleButton.setBackground(new java.awt.Color(0, 0, 0));
+        nextToggleButton.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        nextToggleButton.setForeground(new java.awt.Color(255, 255, 255));
+        nextToggleButton.setText(framesResourceBundle.getString("QuizFrame.startToggleButton.text")); // NOI18N
+        nextToggleButton.setBorder(null);
+        nextToggleButton.addActionListener(new java.awt.event.ActionListener()
         {
             public void actionPerformed(java.awt.event.ActionEvent evt)
             {
-                StartToggleButtonActionPerformed(evt);
+                nextToggleButtonActionPerformed(evt);
             }
         });
 
-        optionsToggleButton.setBackground(new java.awt.Color(0, 0, 0));
-        optionsToggleButton.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        optionsToggleButton.setForeground(new java.awt.Color(255, 255, 255));
-        optionsToggleButton.setText(framesResourceBundle.getString("QuizFrame.optionsToggleButton.text")); // NOI18N
-        optionsToggleButton.setBorder(null);
-        optionsToggleButton.addActionListener(new java.awt.event.ActionListener()
+        backToggleButton.setBackground(new java.awt.Color(0, 0, 0));
+        backToggleButton.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        backToggleButton.setForeground(new java.awt.Color(255, 255, 255));
+        backToggleButton.setText(framesResourceBundle.getString("QuizFrame.optionsToggleButton.text")); // NOI18N
+        backToggleButton.setBorder(null);
+        backToggleButton.setEnabled(false);
+        backToggleButton.addActionListener(new java.awt.event.ActionListener()
         {
             public void actionPerformed(java.awt.event.ActionEvent evt)
             {
-                optionsToggleButtonActionPerformed(evt);
+                backToggleButtonActionPerformed(evt);
+            }
+        });
+
+        SubmitAnswerToggleButton1.setBackground(new java.awt.Color(0, 0, 0));
+        SubmitAnswerToggleButton1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        SubmitAnswerToggleButton1.setForeground(new java.awt.Color(255, 255, 255));
+        SubmitAnswerToggleButton1.setText("Submit Test");
+        SubmitAnswerToggleButton1.setBorder(null);
+        SubmitAnswerToggleButton1.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
+                SubmitAnswerToggleButton1ActionPerformed(evt);
             }
         });
 
@@ -187,60 +202,58 @@ public class QuizPanel extends RsaQuizPanel
         mainPanel.setLayout(mainPanelLayout);
         mainPanelLayout.setHorizontalGroup(
             mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(PictureQuestionPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(QuestionLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(mainPanelLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(mainPanelLayout.createSequentialGroup()
-                        .addComponent(StartToggleButton, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(143, 143, 143)
+                        .addComponent(TimeLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(imagelabel, javax.swing.GroupLayout.DEFAULT_SIZE, 375, Short.MAX_VALUE))
+                    .addGroup(mainPanelLayout.createSequentialGroup()
+                        .addGap(12, 12, 12)
+                        .addComponent(backToggleButton, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(counterLabel)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(SymbolLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(MaxLabel)
+                        .addGap(18, 18, 18)
+                        .addComponent(nextToggleButton, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(optionsToggleButton, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(27, 27, 27))
-                    .addGroup(mainPanelLayout.createSequentialGroup()
-                        .addComponent(TimeLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(imagelabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                        .addComponent(SubmitAnswerToggleButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap())))
+            .addComponent(PictureQuestionPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         mainPanelLayout.setVerticalGroup(
             mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(mainPanelLayout.createSequentialGroup()
                 .addGroup(mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(imagelabel, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, mainPanelLayout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(TimeLabel)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)))
+                        .addGap(11, 11, 11))
+                    .addComponent(imagelabel, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addComponent(PictureQuestionPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(QuestionLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGroup(mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(mainPanelLayout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(optionsToggleButton)
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, mainPanelLayout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGroup(mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                .addComponent(SymbolLabel)
-                                .addComponent(MaxLabel)
-                                .addComponent(counterLabel))
-                            .addComponent(StartToggleButton))
-                        .addContainerGap())))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 9, Short.MAX_VALUE)
+                .addGroup(mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(counterLabel)
+                    .addComponent(SymbolLabel)
+                    .addComponent(MaxLabel)
+                    .addComponent(backToggleButton)
+                    .addComponent(nextToggleButton)
+                    .addComponent(SubmitAnswerToggleButton1))
+                .addGap(39, 39, 39))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(mainPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(mainPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -249,41 +262,35 @@ public class QuizPanel extends RsaQuizPanel
     }// </editor-fold>//GEN-END:initComponents
 
 	int currentIndex = 0;
-    private void StartToggleButtonActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_StartToggleButtonActionPerformed
-    {//GEN-HEADEREND:event_StartToggleButtonActionPerformed
-//		var question = this.getRsaQuizManger().getRsaSignQuestionBank().get(currentIndex++);
-//		var question2 = this.getRsaQuizManger().getRsaSignQuestionBank().get(currentIndex++);
-//		var question3 = this.getRsaQuizManger().getRsaSignQuestionBank().get(currentIndex++);
-	     var question = this.getRsaQuizManger().getRsaSignQuestionBank().get(currentIndex++);
-		loadQuestion(question);
+    private void nextToggleButtonActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_nextToggleButtonActionPerformed
+    {//GEN-HEADEREND:event_nextToggleButtonActionPerformed
+		loadNextQuestion();
+    }//GEN-LAST:event_nextToggleButtonActionPerformed
 
-    }//GEN-LAST:event_StartToggleButtonActionPerformed
+    private void backToggleButtonActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_backToggleButtonActionPerformed
+    {//GEN-HEADEREND:event_backToggleButtonActionPerformed
+		loadPreviousQuestion();
+    }//GEN-LAST:event_backToggleButtonActionPerformed
 
-    private void optionsToggleButtonActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_optionsToggleButtonActionPerformed
-    {//GEN-HEADEREND:event_optionsToggleButtonActionPerformed
-		this.getRsaQuizManger().setLanguageMenuVisible(true);
-		this.setVisible(false);
-    }//GEN-LAST:event_optionsToggleButtonActionPerformed
-
-    private void pic1ToggleButtonActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_pic1ToggleButtonActionPerformed
-    {//GEN-HEADEREND:event_pic1ToggleButtonActionPerformed
-		checkAnswer(this.pic1ToggleButton);
-		System.out.println("pic1ToggleButton");
-    }//GEN-LAST:event_pic1ToggleButtonActionPerformed
+    private void option1ToggleButtonActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_option1ToggleButtonActionPerformed
+    {//GEN-HEADEREND:event_option1ToggleButtonActionPerformed
+		checkAnswer(this.option1ToggleButton);
+    }//GEN-LAST:event_option1ToggleButtonActionPerformed
 
     private void pic2ToggleButtonActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_pic2ToggleButtonActionPerformed
     {//GEN-HEADEREND:event_pic2ToggleButtonActionPerformed
-		// TODO add your handling code here:
 		checkAnswer(this.pic2ToggleButton);
-		System.out.println("pic2ToggleButton");
     }//GEN-LAST:event_pic2ToggleButtonActionPerformed
 
     private void pic3ButtonMouseClicked(java.awt.event.MouseEvent evt)//GEN-FIRST:event_pic3ButtonMouseClicked
     {//GEN-HEADEREND:event_pic3ButtonMouseClicked
-		// TODO add your handling code here:
 		checkAnswer(this.pic3Button);
-		System.out.println("pic3Button");
     }//GEN-LAST:event_pic3ButtonMouseClicked
+
+    private void SubmitAnswerToggleButton1ActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_SubmitAnswerToggleButton1ActionPerformed
+    {//GEN-HEADEREND:event_SubmitAnswerToggleButton1ActionPerformed
+		this.getRsaQuizManger().setFeedBackVisible(true);
+    }//GEN-LAST:event_SubmitAnswerToggleButton1ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -291,14 +298,15 @@ public class QuizPanel extends RsaQuizPanel
     private javax.swing.JLabel MaxLabel;
     private javax.swing.JPanel PictureQuestionPanel;
     private javax.swing.JLabel QuestionLabel;
-    private javax.swing.JToggleButton StartToggleButton;
+    private javax.swing.JToggleButton SubmitAnswerToggleButton1;
     private javax.swing.JLabel SymbolLabel;
     private javax.swing.JLabel TimeLabel;
+    private javax.swing.JToggleButton backToggleButton;
     private javax.swing.JLabel counterLabel;
     private javax.swing.JLabel imagelabel;
     private javax.swing.JPanel mainPanel;
-    private javax.swing.JToggleButton optionsToggleButton;
-    private javax.swing.JToggleButton pic1ToggleButton;
+    private javax.swing.JToggleButton nextToggleButton;
+    private javax.swing.JToggleButton option1ToggleButton;
     private javax.swing.JToggleButton pic2ToggleButton;
     private javax.swing.JToggleButton pic3Button;
     // End of variables declaration//GEN-END:variables
@@ -322,17 +330,50 @@ public class QuizPanel extends RsaQuizPanel
 	int correctIndex;
 	final JToggleButton[] buttons;
 
-	private void checkAnswer(JToggleButton pic1ToggleButton)
+	private void checkAnswer(JToggleButton button)
 	{
-		System.out.println(correctIndex);
+		boolean isAnswerCorrect = (buttons[correctIndex] == button);
+		getUserData().getUserQuizResults()[currentIndex] = isAnswerCorrect;
 
-		if (user.getUserData.getQuizQuestionResult()[currentIndex]="right")
-		{//Correct;;
-			System.out.println("Right");
+		loadNextQuestion();
+
+	}
+
+	public void loadPreviousQuestion()
+	{
+		currentIndex--;
+		this.nextToggleButton.setEnabled(true);
+		if (currentIndex >= 0)
+		{
+			var question = this.getUserData().getQuizQuestions().get(currentIndex);
+			this.counterLabel.setText("" + (currentIndex + 1));
+			loadQuestion(question);
 		}
 		else
 		{
-			System.out.println("Wrong");
+			this.backToggleButton.setEnabled(false);
+		}
+	}
+
+	public void initQuiz()
+	{
+		var question = this.getRsaQuizManger().getUser().getUserData().getQuizQuestions().get(currentIndex);
+		loadQuestion(question);
+	}
+
+	public void loadNextQuestion()
+	{
+		this.backToggleButton.setEnabled(true);
+		currentIndex++;
+		if (currentIndex < this.getRsaQuizManger().getUser().getUserData().getQuizQuestions().size())
+		{
+			var question = this.getUserData().getQuizQuestions().get(currentIndex);
+			loadQuestion(question);
+			this.counterLabel.setText("" + (currentIndex + 1));
+		}
+		else
+		{
+			this.nextToggleButton.setEnabled(false);
 		}
 	}
 }

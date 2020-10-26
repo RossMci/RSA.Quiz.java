@@ -13,19 +13,31 @@ public class RsaQuizFrame extends javax.swing.JFrame implements RsaQuizManger
 	public RsaQuizFrame()
 	{
 		initComponents();
+		this.headingPanel1.setRsaQuizManger(this);
 		//panels[1] = this.headingPanel1;
-		
 
 		panels[0] = this.languagePanel1;
 		panels[1] = this.splashScreenPanel1;
-		panels[2] = this.quizPanel2;
+		panels[2] = this.quizPanel;
 		panels[3] = this.userFeedBackPanel1;
-		for(RsaQuizPanel panel : panels)
+		for (RsaQuizPanel panel : panels)
 		{
-			if(panel != null)
+			if (panel != null)
 			{
 				panel.setRsaQuizManger(this);
 				panel.setVisible(false);
+			}
+		}
+		this.startQuiz();
+	}
+
+	private void setPanelsVisible(boolean visible)
+	{
+		for (RsaQuizPanel panel : panels)
+		{
+			if (panel != null)
+			{
+				panel.setVisible(visible);
 			}
 		}
 	}
@@ -50,20 +62,24 @@ public class RsaQuizFrame extends javax.swing.JFrame implements RsaQuizManger
 	{
 		locale = value;
 	}
+
 	@Override
 	public User getUser()
 	{
 		return this.user;
 	}
+
 	@Override
 	public void setUser(User user)
 	{
 		this.user = user;
 	}
+
 	public void loginAsGuest()
 	{
 		this.user = this.guestUser;
 	}
+
 	//
 	//	Methods
 	//
@@ -71,7 +87,7 @@ public class RsaQuizFrame extends javax.swing.JFrame implements RsaQuizManger
 	public void run()
 	{
 		this.setVisible(true);
-		if(showSplashScreenFrame)
+		if (showSplashScreenFrame)
 		{
 			setSplashScreenVisible(true);
 			this.splashScreenPanel1.run();
@@ -83,9 +99,9 @@ public class RsaQuizFrame extends javax.swing.JFrame implements RsaQuizManger
 	@Override
 	public void reloadLocaleResource()
 	{
-		for(RsaQuizPanel panel : panels)
+		for (RsaQuizPanel panel : panels)
 		{
-			if(panel != null)
+			if (panel != null)
 			{
 				panel.reloadLocaleResource();
 			}
@@ -96,18 +112,24 @@ public class RsaQuizFrame extends javax.swing.JFrame implements RsaQuizManger
 	@Override
 	public void setLanguageMenuVisible(boolean visible)
 	{
+		setPanelsVisible(false);
 		this.languagePanel1.setVisible(visible);
 	}
 
 	@Override
 	public void setQuizVisible(boolean visible)
 	{
-		this.quizPanel2.setVisible(visible);
+		setPanelsVisible(false);
+
+		this.quizPanel.setVisible(visible);
+		this.quizPanel.initQuiz();
 	}
 
 	@Override
 	public void setFeedBackVisible(boolean visible)
 	{
+		setPanelsVisible(false);
+		this.userFeedBackPanel1.showData();
 		this.userFeedBackPanel1.setVisible(visible);
 	}
 
@@ -136,11 +158,11 @@ public class RsaQuizFrame extends javax.swing.JFrame implements RsaQuizManger
 		{
 			this.rsaSignQuestions = RsaSignQuestionRepository.getAll(directoryContextPath, true);
 		}
-		catch(IOException ex)
+		catch (IOException ex)
 		{
 			Logger.getLogger(RsaQuizFrame.class.getName()).log(Level.SEVERE, null, ex);
 		}
-		catch(URISyntaxException ex)
+		catch (URISyntaxException ex)
 		{
 			Logger.getLogger(RsaQuizFrame.class.getName()).log(Level.SEVERE, null, ex);
 		}
@@ -188,17 +210,17 @@ public class RsaQuizFrame extends javax.swing.JFrame implements RsaQuizManger
         headingPanel1 = new io.github.rossmci.rsaquiz.HeadingPanel();
         splashScreenPanel1 = new io.github.rossmci.rsaquiz.SplashScreenPanel();
         languagePanel1 = new io.github.rossmci.rsaquiz.LanguagePanel();
-        quizPanel2 = new io.github.rossmci.rsaquiz.QuizPanel();
+        quizPanel = new io.github.rossmci.rsaquiz.QuizPanel();
         userFeedBackPanel1 = new io.github.rossmci.rsaquiz.UserFeedBackPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         headingPanel1.setMaximumSize(new java.awt.Dimension(33267, 549));
-        getContentPane().add(headingPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 880, -1));
+        getContentPane().add(headingPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 670, -1));
         getContentPane().add(splashScreenPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
         getContentPane().add(languagePanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 54, -1, -1));
-        getContentPane().add(quizPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 54, 499, -1));
+        getContentPane().add(quizPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 54, 499, -1));
         getContentPane().add(userFeedBackPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 54, -1, -1));
 
         pack();
@@ -208,7 +230,7 @@ public class RsaQuizFrame extends javax.swing.JFrame implements RsaQuizManger
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private io.github.rossmci.rsaquiz.HeadingPanel headingPanel1;
     private io.github.rossmci.rsaquiz.LanguagePanel languagePanel1;
-    private io.github.rossmci.rsaquiz.QuizPanel quizPanel2;
+    private io.github.rossmci.rsaquiz.QuizPanel quizPanel;
     private io.github.rossmci.rsaquiz.SplashScreenPanel splashScreenPanel1;
     private io.github.rossmci.rsaquiz.UserFeedBackPanel userFeedBackPanel1;
     // End of variables declaration//GEN-END:variables

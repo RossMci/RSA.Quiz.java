@@ -16,18 +16,13 @@ public abstract class RsaQuizPanel extends javax.swing.JPanel
 		this();
 		this.rsaQuizManger = rsaQuizManger;
 		this.framesResourceBundle = ResourceBundle.getBundle("bundles/Frames", this.rsaQuizManger.getLocale());
-		this.userData = userData;
 	}
 
 	public UserData getUserData()
 	{
-		return userData;
+		return rsaQuizManger.getUserData();
 	}
 
-	public void setUserData(UserData userData)
-	{
-		this.userData = userData;
-	}
 
 	//
 	//	Properties
@@ -54,9 +49,6 @@ public abstract class RsaQuizPanel extends javax.swing.JPanel
 	//	Private Fields
 	//
 	private RsaQuizManger rsaQuizManger;
-
-	private UserData userData;
-
 	/**
 	 * This method is called from within the constructor to initialize the form.
 	 * WARNING: Do NOT modify this code. The content of this method is always

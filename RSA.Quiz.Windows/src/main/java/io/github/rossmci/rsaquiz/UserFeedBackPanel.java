@@ -4,17 +4,23 @@ import java.util.ResourceBundle;
 
 public class UserFeedBackPanel extends RsaQuizPanel
 {
+
 	public UserFeedBackPanel()
 	{
 		frames = this.framesResourceBundle;
 		initComponents();
 	}
+
 	@Override
 	public void reloadLocaleResource()
 	{
 		this.framesResourceBundle = ResourceBundle.getBundle("bundles/Frames", this.getRsaQuizManger().getLocale());
 	}
-	
+
+	public void showData()
+	{
+		this.jLabel9.setText(this.getUserData().getScore() + "");
+	}
 	//declare and create your resource bundle
 	private ResourceBundle frames;
 
