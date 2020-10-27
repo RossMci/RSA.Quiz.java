@@ -214,14 +214,19 @@ public class RsaQuizFrame extends javax.swing.JFrame implements RsaQuizManger
         userFeedBackPanel1 = new io.github.rossmci.rsaquiz.UserFeedBackPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setMaximumSize(new java.awt.Dimension(750, 700));
+        setSize(new java.awt.Dimension(750, 670));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         headingPanel1.setMaximumSize(new java.awt.Dimension(33267, 549));
-        getContentPane().add(headingPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 670, -1));
-        getContentPane().add(splashScreenPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
-        getContentPane().add(languagePanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 54, -1, -1));
-        getContentPane().add(quizPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 54, 499, -1));
-        getContentPane().add(userFeedBackPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 54, -1, -1));
+        getContentPane().add(headingPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 610, -1));
+        getContentPane().add(splashScreenPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 610, 590));
+        getContentPane().add(languagePanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 54, 610, 530));
+
+        quizPanel.setMaximumSize(new java.awt.Dimension(590, 580));
+        quizPanel.setPreferredSize(new java.awt.Dimension(590, 670));
+        getContentPane().add(quizPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 48, 610, 540));
+        getContentPane().add(userFeedBackPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 54, 610, 530));
 
         pack();
         setLocationRelativeTo(null);
