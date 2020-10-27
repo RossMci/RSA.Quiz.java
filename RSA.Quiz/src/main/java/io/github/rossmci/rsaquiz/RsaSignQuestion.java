@@ -107,11 +107,22 @@ public class RsaSignQuestion
 	{
 		this.options = options;
 	}
+
+	public String getAnswer()
+	{
+		return answer;
+	}
+
+	public void setAnswer(String answer)
+	{
+		this.answer = answer;
+	}
 	
 
 	private ArrayList<String> options;
 	private int index;
 	private String imageName;
+	private String answer;
 	private String category;
 	private String path;
 

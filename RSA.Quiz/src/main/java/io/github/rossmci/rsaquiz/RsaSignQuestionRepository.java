@@ -23,6 +23,7 @@ public class RsaSignQuestionRepository
 				image.setCategory(directory.getName());
 				image.setPath(file.getCanonicalPath());
 				image.setImageName(file.getName());
+				image.setAnswer(file.getName());
 				resultList.add(image);
 			}
 			else if (descendIntoSubDirectories && file.isDirectory())
