@@ -74,6 +74,13 @@ public final class UserFeedBackPanel extends RsaQuizPanel
         restartToggleButton.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         restartToggleButton.setForeground(new java.awt.Color(255, 255, 255));
         restartToggleButton.setText(frames.getString("FeedBackForm.restartToggleButton.text")); // NOI18N
+        restartToggleButton.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
+                restartToggleButtonActionPerformed(evt);
+            }
+        });
 
         titleLabel.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         titleLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -142,6 +149,12 @@ public final class UserFeedBackPanel extends RsaQuizPanel
             .addComponent(jPanel2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
     }// </editor-fold>//GEN-END:initComponents
+
+    private void restartToggleButtonActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_restartToggleButtonActionPerformed
+    {//GEN-HEADEREND:event_restartToggleButtonActionPerformed
+        getRsaQuizManger().startQuiz();
+		getRsaQuizManger().setQuizVisible(true);
+    }//GEN-LAST:event_restartToggleButtonActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

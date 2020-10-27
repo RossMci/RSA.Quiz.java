@@ -14,9 +14,6 @@ public class QuizPanel extends RsaQuizPanel
 			userOptionjToggleButton0,
 			userOptionjToggleButton1,
 			userOptionjToggleButton2
-//			option1ToggleButton,
-//			pic2ToggleButton,
-//			pic3Button
 		};
 	}
 
@@ -24,13 +21,95 @@ public class QuizPanel extends RsaQuizPanel
 	public void reloadLocaleResource()
 	{
 		this.framesResourceBundle = ResourceBundle.getBundle("bundles/Frames", this.getRsaQuizManger().getLocale());
-		backjButton.setText(framesResourceBundle.getString("QuizFrame.optionsToggleButton.text")); // NOI18N
-		nextjButton.setText(framesResourceBundle.getString("QuizFrame.startToggleButton.text")); // NOI18N
+		backjButton.setText(framesResourceBundle.getString("QuizFrame.BACKButton.text")); // NOI18N
+		nextjButton.setText(framesResourceBundle.getString("QuizFrame.NEXTButton.text")); // NOI18N
+        SubmitAnswerjButton.setText(framesResourceBundle.getString("QuizFrame.SUBMITTESTButton.text")); // NOI18N
 		instructionLabel.setText(framesResourceBundle.getString("QuizFrame.instructionLabel.text")); // NOI18N
+	}
+	int currentIndex;
+	final JToggleButton[] buttons;
 
-		//TODO:this.TimeLabel.setText(date.tosTring(rsaQuiz.getLocale()));
-//	      DateFormat formatter = DateFormat.getDateTimeInstance(DateFormat.SHORT, DateFormat.SHORT, rsaQuiz.getLocale());
-//		  TimeLabel.setText(formatter.format(cal.getTime()));
+	private void checkAnswer(int selectedOptionIndex)
+	{
+		unToogleButtons();
+		this.buttons[selectedOptionIndex].setSelected(true);
+
+		var userData = this.getUserData();
+		var question = userData.getQuizQuestions().get(currentIndex);
+
+		boolean isAnswerCorrect = question.isSelectedAnswerCorrect(selectedOptionIndex);
+		userData.getGivenAnswers()[currentIndex] = selectedOptionIndex;
+		userData.getUserQuizResults()[currentIndex] = isAnswerCorrect;
+	}
+
+	public void initQuiz()
+	{
+		currentIndex = -1;
+		loadNextQuestion();// Will get the first question
+	}
+
+	private void loadNextQuestion()
+	{
+		currentIndex++;
+		loadQuestion();
+	}
+
+	private void loadPreviousQuestion()
+	{
+		currentIndex--;
+		loadQuestion();
+	}
+
+	private void loadQuestion()
+	{
+		manageNavigationButtons();
+
+		var question = this.getUserData().getQuizQuestions().get(currentIndex);
+		loadQuestion(question);
+		this.counterLabel.setText("" + (currentIndex + 1));
+	}
+
+	private void manageNavigationButtons()
+	{
+		int testSize = this.getRsaQuizManger().getUser().getUserData().getQuizQuestions().size() -1;
+		this.backjButton.setEnabled(currentIndex != 0);
+		this.nextjButton.setEnabled(currentIndex != testSize);
+	}
+
+	private void loadQuestion(RsaSignQuestion question)
+	{
+		var questionsResourceBundle = ResourceBundle.getBundle("bundles/questions", this.getRsaQuizManger().getLocale());
+
+		String key = question.getImageName().replaceAll(".gif", "").replaceAll(" ", "");
+		this.questionLabel.setText(questionsResourceBundle.getString(key));
+
+		for (int index = 0; index < 3; index++)
+		{
+			buttons[index].setIcon(new javax.swing.ImageIcon(question.getOptions().get(index)));
+		}
+		loadSavedAnswer(currentIndex);
+	}
+
+	private void loadSavedAnswer(int currentIndex)
+	{
+		int answerIndex = getUserData().getGivenAnswers()[currentIndex];
+		if (answerIndex == -1)
+		{
+			unToogleButtons();
+		}
+		else
+		{
+			unToogleButtons();
+			this.buttons[answerIndex].setSelected(true);
+		}
+	}
+
+	private void unToogleButtons()
+	{
+		for (JToggleButton button : buttons)
+		{
+			button.setSelected(false);
+		}
 	}
 
 	/**
@@ -164,7 +243,7 @@ public class QuizPanel extends RsaQuizPanel
 
         SubmitAnswerjButton.setBackground(new java.awt.Color(0, 0, 0));
         SubmitAnswerjButton.setForeground(new java.awt.Color(255, 255, 255));
-        SubmitAnswerjButton.setText("Submit Test");
+        SubmitAnswerjButton.setText(framesResourceBundle.getString("QuizFrame.SUBMITTESTButton.text")); // NOI18N
         SubmitAnswerjButton.addActionListener(new java.awt.event.ActionListener()
         {
             public void actionPerformed(java.awt.event.ActionEvent evt)
@@ -175,7 +254,7 @@ public class QuizPanel extends RsaQuizPanel
 
         nextjButton.setBackground(new java.awt.Color(0, 0, 0));
         nextjButton.setForeground(new java.awt.Color(255, 255, 255));
-        nextjButton.setText("Next");
+        nextjButton.setText(framesResourceBundle.getString("QuizFrame.NEXTButton.text")); // NOI18N
         nextjButton.addActionListener(new java.awt.event.ActionListener()
         {
             public void actionPerformed(java.awt.event.ActionEvent evt)
@@ -186,7 +265,7 @@ public class QuizPanel extends RsaQuizPanel
 
         backjButton.setBackground(new java.awt.Color(0, 0, 0));
         backjButton.setForeground(new java.awt.Color(255, 255, 255));
-        backjButton.setText("Back");
+        backjButton.setText(framesResourceBundle.getString("QuizFrame.BACKButton.text")); // NOI18N
         backjButton.addActionListener(new java.awt.event.ActionListener()
         {
             public void actionPerformed(java.awt.event.ActionEvent evt)
@@ -250,7 +329,7 @@ public class QuizPanel extends RsaQuizPanel
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(mainPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 659, Short.MAX_VALUE)
+            .addComponent(mainPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -258,7 +337,6 @@ public class QuizPanel extends RsaQuizPanel
         );
     }// </editor-fold>//GEN-END:initComponents
 
-	int currentIndex = 0;
     private void SubmitAnswerjButtonActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_SubmitAnswerjButtonActionPerformed
     {//GEN-HEADEREND:event_SubmitAnswerjButtonActionPerformed
 		this.getRsaQuizManger().setFeedBackVisible(true);
@@ -267,27 +345,30 @@ public class QuizPanel extends RsaQuizPanel
 
     private void backjButtonActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_backjButtonActionPerformed
     {//GEN-HEADEREND:event_backjButtonActionPerformed
+		unToogleButtons();
 		loadPreviousQuestion();
     }//GEN-LAST:event_backjButtonActionPerformed
 
     private void nextjButtonActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_nextjButtonActionPerformed
     {//GEN-HEADEREND:event_nextjButtonActionPerformed
+		unToogleButtons();
 		loadNextQuestion();
     }//GEN-LAST:event_nextjButtonActionPerformed
 
     private void userOptionjToggleButton0ActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_userOptionjToggleButton0ActionPerformed
     {//GEN-HEADEREND:event_userOptionjToggleButton0ActionPerformed
-        checkAnswer(0);
+		checkAnswer(0);
+
     }//GEN-LAST:event_userOptionjToggleButton0ActionPerformed
 
     private void userOptionjToggleButton1ActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_userOptionjToggleButton1ActionPerformed
     {//GEN-HEADEREND:event_userOptionjToggleButton1ActionPerformed
-          checkAnswer(1);
+		checkAnswer(1);
     }//GEN-LAST:event_userOptionjToggleButton1ActionPerformed
 
     private void userOptionjToggleButton2ActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_userOptionjToggleButton2ActionPerformed
     {//GEN-HEADEREND:event_userOptionjToggleButton2ActionPerformed
-           checkAnswer(2);
+		checkAnswer(2);
     }//GEN-LAST:event_userOptionjToggleButton2ActionPerformed
 
 
@@ -309,64 +390,4 @@ public class QuizPanel extends RsaQuizPanel
     private javax.swing.JToggleButton userOptionjToggleButton2;
     // End of variables declaration//GEN-END:variables
 
-	private void loadQuestion(RsaSignQuestion question)
-	{
-		this.questionLabel.setText(question.getImageName());
-
-		for (int index = 0; index < 3; index++)
-		{
-			buttons[index].setIcon(new javax.swing.ImageIcon(question.getOptions().get(index)));
-		}
-	}
-	int correctIndex;
-	final JToggleButton[] buttons;
-
-	private void checkAnswer(int selectedOptionIndex)
-	{
-		var question = this.getUserData().getQuizQuestions().get(currentIndex);
-		boolean isAnswerCorrect = question.getOptions().get(selectedOptionIndex).equalsIgnoreCase(question.getImageName());
-		getUserData().getUserQuizResults()[currentIndex] = isAnswerCorrect;
-         var answer=question.getOptions().get(selectedOptionIndex).equalsIgnoreCase(question.getImageName());
-		loadNextQuestion();
-
-	}
-
-	public void loadPreviousQuestion()
-	{
-		currentIndex--;
-		this.nextjButton.setEnabled(true);
-		if (currentIndex >= 0)
-		{
-			var question = this.getUserData().getQuizQuestions().get(currentIndex);
-			this.counterLabel.setText("" + (currentIndex + 1));
-			loadQuestion(question);
-		}
-		else
-		{
-			this.backjButton.setEnabled(false);
-		}
-	}
-
-	public void initQuiz()
-	{
-		var question = this.getRsaQuizManger().getUser().getUserData().getQuizQuestions().get(currentIndex);
-		loadQuestion(question);
-	}
-
-	public void loadNextQuestion()
-	{
-		this.backjButton.setEnabled(true);
-		currentIndex++;
-		if (currentIndex < this.getRsaQuizManger().getUser().getUserData().getQuizQuestions().size())
-		{
-			var question = this.getUserData().getQuizQuestions().get(currentIndex);
-			loadQuestion(question);
-			//highlight if Answed
-			this.counterLabel.setText("" + (currentIndex + 1));
-		}
-		else
-		{
-			this.nextjButton.setEnabled(false);
-		}
-	}
 }
