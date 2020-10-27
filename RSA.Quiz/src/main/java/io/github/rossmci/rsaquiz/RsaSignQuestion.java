@@ -103,19 +103,13 @@ public class RsaSignQuestion
 	{
 		return options;
 	}
-	public String setOptions()
-	{
-		//TODO FIx
-		return wrongImageNameOption2;
-	}
-
 	public void setOptions(ArrayList<String> options)
 	{
 		this.options = options;
 	}
 	
 
-	private ArrayList<String> options;//get and set
+	private ArrayList<String> options;
 	private int index;
 	private String imageName;
 	private String category;
