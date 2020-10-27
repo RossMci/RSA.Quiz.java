@@ -36,8 +36,8 @@ public final class UserFeedBackPanel extends RsaQuizPanel
 
         jPanel2 = new javax.swing.JPanel();
         percentageLabel = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
+        percentTotalLabel = new javax.swing.JLabel();
+        incorrectScoreLabel = new javax.swing.JLabel();
         correctLabel = new javax.swing.JLabel();
         incorrectLabel = new javax.swing.JLabel();
         correctScoreLabel = new javax.swing.JLabel();
@@ -50,13 +50,13 @@ public final class UserFeedBackPanel extends RsaQuizPanel
         percentageLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         percentageLabel.setText(frames.getString("FeedBackForm.percentageLabel.text")); // NOI18N
 
-        jLabel6.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        jLabel6.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel6.setText("0"); // NOI18N
+        percentTotalLabel.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        percentTotalLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        percentTotalLabel.setText("0"); // NOI18N
 
-        jLabel5.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel5.setText("0"); // NOI18N
+        incorrectScoreLabel.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        incorrectScoreLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        incorrectScoreLabel.setText("0"); // NOI18N
 
         correctLabel.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         correctLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -99,8 +99,8 @@ public final class UserFeedBackPanel extends RsaQuizPanel
                                 .addComponent(incorrectLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                             .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 12, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 12, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                .addComponent(percentTotalLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 12, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(incorrectScoreLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 12, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                         .addGap(95, 95, 95)
                         .addComponent(restartToggleButton, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -121,11 +121,11 @@ public final class UserFeedBackPanel extends RsaQuizPanel
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(incorrectLabel)
-                    .addComponent(jLabel5))
+                    .addComponent(incorrectScoreLabel))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(percentageLabel)
-                    .addComponent(jLabel6))
+                    .addComponent(percentTotalLabel))
                 .addGap(18, 18, 18)
                 .addComponent(restartToggleButton, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(312, Short.MAX_VALUE))
@@ -148,9 +148,9 @@ public final class UserFeedBackPanel extends RsaQuizPanel
     private javax.swing.JLabel correctLabel;
     private javax.swing.JLabel correctScoreLabel;
     private javax.swing.JLabel incorrectLabel;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel incorrectScoreLabel;
     private javax.swing.JPanel jPanel2;
+    private javax.swing.JLabel percentTotalLabel;
     private javax.swing.JLabel percentageLabel;
     private javax.swing.JToggleButton restartToggleButton;
     private javax.swing.JLabel titleLabel;

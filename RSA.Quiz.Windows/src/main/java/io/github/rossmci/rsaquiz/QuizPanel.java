@@ -1,7 +1,7 @@
 package io.github.rossmci.rsaquiz;
 
 import java.util.ResourceBundle;
-import javax.swing.JButton;
+import javax.swing.JToggleButton;
 
 public class QuizPanel extends RsaQuizPanel
 {
@@ -9,11 +9,11 @@ public class QuizPanel extends RsaQuizPanel
 	public QuizPanel()
 	{
 		initComponents();
-		buttons = new JButton[]
+		buttons = new JToggleButton[]
 		{
-			option1jButton,
-			pic2jButton,
-			pic3jButton
+			userOptionjToggleButton0,
+			userOptionjToggleButton1,
+			userOptionjToggleButton2
 //			option1ToggleButton,
 //			pic2ToggleButton,
 //			pic3Button
@@ -26,7 +26,7 @@ public class QuizPanel extends RsaQuizPanel
 		this.framesResourceBundle = ResourceBundle.getBundle("bundles/Frames", this.getRsaQuizManger().getLocale());
 		backjButton.setText(framesResourceBundle.getString("QuizFrame.optionsToggleButton.text")); // NOI18N
 		nextjButton.setText(framesResourceBundle.getString("QuizFrame.startToggleButton.text")); // NOI18N
-		InstructionLabel.setText(framesResourceBundle.getString("QuizFrame.instructionLabel.text")); // NOI18N
+		instructionLabel.setText(framesResourceBundle.getString("QuizFrame.instructionLabel.text")); // NOI18N
 
 		//TODO:this.TimeLabel.setText(date.tosTring(rsaQuiz.getLocale()));
 //	      DateFormat formatter = DateFormat.getDateTimeInstance(DateFormat.SHORT, DateFormat.SHORT, rsaQuiz.getLocale());
@@ -45,15 +45,15 @@ public class QuizPanel extends RsaQuizPanel
 
         mainPanel = new javax.swing.JPanel();
         imagelabel = new javax.swing.JLabel();
-        TimeLabel = new javax.swing.JLabel();
-        PictureQuestionPanel = new javax.swing.JPanel();
-        InstructionLabel = new javax.swing.JLabel();
-        pic3jButton = new javax.swing.JButton();
-        pic2jButton = new javax.swing.JButton();
-        option1jButton = new javax.swing.JButton();
-        QuestionLabel = new javax.swing.JLabel();
-        SymbolLabel = new javax.swing.JLabel();
-        MaxLabel = new javax.swing.JLabel();
+        timeLabel = new javax.swing.JLabel();
+        pictureQuestionPanel = new javax.swing.JPanel();
+        instructionLabel = new javax.swing.JLabel();
+        userOptionjToggleButton0 = new javax.swing.JToggleButton();
+        userOptionjToggleButton1 = new javax.swing.JToggleButton();
+        userOptionjToggleButton2 = new javax.swing.JToggleButton();
+        questionLabel = new javax.swing.JLabel();
+        symbolLabel = new javax.swing.JLabel();
+        maxLabel = new javax.swing.JLabel();
         counterLabel = new javax.swing.JLabel();
         SubmitAnswerjButton = new javax.swing.JButton();
         nextjButton = new javax.swing.JButton();
@@ -67,97 +67,95 @@ public class QuizPanel extends RsaQuizPanel
         imagelabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         imagelabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/rsa-logo.png"))); // NOI18N
 
-        TimeLabel.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        TimeLabel.setForeground(new java.awt.Color(255, 255, 255));
-        TimeLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        TimeLabel.setText("17:00"); // NOI18N
+        timeLabel.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        timeLabel.setForeground(new java.awt.Color(255, 255, 255));
+        timeLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        timeLabel.setText("17:00"); // NOI18N
 
-        PictureQuestionPanel.setBackground(new java.awt.Color(255, 255, 255));
-        PictureQuestionPanel.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 0, 1, 0, new java.awt.Color(255, 51, 51)));
+        pictureQuestionPanel.setBackground(new java.awt.Color(255, 255, 255));
+        pictureQuestionPanel.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 0, 1, 0, new java.awt.Color(255, 51, 51)));
 
-        InstructionLabel.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        InstructionLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        InstructionLabel.setText(framesResourceBundle.getString("QuizFrame.instructionLabel.text")); // NOI18N
+        instructionLabel.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        instructionLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        instructionLabel.setText(framesResourceBundle.getString("QuizFrame.instructionLabel.text")); // NOI18N
 
-        pic3jButton.setBackground(new java.awt.Color(255, 255, 255));
-        pic3jButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/signs/info_signs/Airport.gif"))); // NOI18N
-        pic3jButton.setBorder(null);
-        pic3jButton.addActionListener(new java.awt.event.ActionListener()
+        userOptionjToggleButton0.setBackground(new java.awt.Color(255, 255, 255));
+        userOptionjToggleButton0.setIcon(new javax.swing.ImageIcon(getClass().getResource("/signs/motorway_signs/Advance direction sign.gif"))); // NOI18N
+        userOptionjToggleButton0.setBorder(null);
+        userOptionjToggleButton0.addActionListener(new java.awt.event.ActionListener()
         {
             public void actionPerformed(java.awt.event.ActionEvent evt)
             {
-                pic3jButtonActionPerformed(evt);
+                userOptionjToggleButton0ActionPerformed(evt);
             }
         });
 
-        pic2jButton.setBackground(new java.awt.Color(255, 255, 255));
-        pic2jButton.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        pic2jButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/signs/tourist_signs/Sign to approved tourist information point.gif"))); // NOI18N
-        pic2jButton.setBorder(null);
-        pic2jButton.addActionListener(new java.awt.event.ActionListener()
+        userOptionjToggleButton1.setBackground(new java.awt.Color(255, 255, 255));
+        userOptionjToggleButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/signs/tourist_signs/Pedestrian sign to a tourist attraction.gif"))); // NOI18N
+        userOptionjToggleButton1.setBorder(null);
+        userOptionjToggleButton1.addActionListener(new java.awt.event.ActionListener()
         {
             public void actionPerformed(java.awt.event.ActionEvent evt)
             {
-                pic2jButtonActionPerformed(evt);
+                userOptionjToggleButton1ActionPerformed(evt);
             }
         });
 
-        option1jButton.setBackground(new java.awt.Color(255, 255, 255));
-        option1jButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/signs/tourist_signs/Pedestrian sign to a car park.gif"))); // NOI18N
-        option1jButton.setBorder(null);
-        option1jButton.addActionListener(new java.awt.event.ActionListener()
+        userOptionjToggleButton2.setBackground(new java.awt.Color(255, 255, 255));
+        userOptionjToggleButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/signs/regulatory_signs/Clearway.gif"))); // NOI18N
+        userOptionjToggleButton2.setBorder(null);
+        userOptionjToggleButton2.addActionListener(new java.awt.event.ActionListener()
         {
             public void actionPerformed(java.awt.event.ActionEvent evt)
             {
-                option1jButtonActionPerformed(evt);
+                userOptionjToggleButton2ActionPerformed(evt);
             }
         });
 
-        javax.swing.GroupLayout PictureQuestionPanelLayout = new javax.swing.GroupLayout(PictureQuestionPanel);
-        PictureQuestionPanel.setLayout(PictureQuestionPanelLayout);
-        PictureQuestionPanelLayout.setHorizontalGroup(
-            PictureQuestionPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(InstructionLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addGroup(PictureQuestionPanelLayout.createSequentialGroup()
-                .addComponent(option1jButton, javax.swing.GroupLayout.PREFERRED_SIZE, 181, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(pic2jButton, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(pic3jButton, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 34, Short.MAX_VALUE))
+        javax.swing.GroupLayout pictureQuestionPanelLayout = new javax.swing.GroupLayout(pictureQuestionPanel);
+        pictureQuestionPanel.setLayout(pictureQuestionPanelLayout);
+        pictureQuestionPanelLayout.setHorizontalGroup(
+            pictureQuestionPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pictureQuestionPanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(userOptionjToggleButton0, javax.swing.GroupLayout.PREFERRED_SIZE, 213, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, 0)
+                .addComponent(userOptionjToggleButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 187, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, 0)
+                .addComponent(userOptionjToggleButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addComponent(instructionLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
-        PictureQuestionPanelLayout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {option1jButton, pic2jButton, pic3jButton});
+        pictureQuestionPanelLayout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {userOptionjToggleButton0, userOptionjToggleButton1, userOptionjToggleButton2});
 
-        PictureQuestionPanelLayout.setVerticalGroup(
-            PictureQuestionPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(PictureQuestionPanelLayout.createSequentialGroup()
+        pictureQuestionPanelLayout.setVerticalGroup(
+            pictureQuestionPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pictureQuestionPanelLayout.createSequentialGroup()
                 .addGap(8, 8, 8)
-                .addComponent(InstructionLabel)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(PictureQuestionPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(pic2jButton, javax.swing.GroupLayout.PREFERRED_SIZE, 353, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(option1jButton, javax.swing.GroupLayout.PREFERRED_SIZE, 353, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(pic3jButton, javax.swing.GroupLayout.PREFERRED_SIZE, 353, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addComponent(instructionLabel)
+                .addGap(18, 18, 18)
+                .addGroup(pictureQuestionPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(userOptionjToggleButton0, javax.swing.GroupLayout.DEFAULT_SIZE, 319, Short.MAX_VALUE)
+                    .addComponent(userOptionjToggleButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(userOptionjToggleButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
         );
 
-        PictureQuestionPanelLayout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {option1jButton, pic2jButton, pic3jButton});
+        questionLabel.setBackground(new java.awt.Color(255, 51, 51));
+        questionLabel.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        questionLabel.setForeground(new java.awt.Color(255, 255, 255));
+        questionLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        questionLabel.setText("Test Question");
 
-        QuestionLabel.setBackground(new java.awt.Color(255, 51, 51));
-        QuestionLabel.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        QuestionLabel.setForeground(new java.awt.Color(255, 255, 255));
-        QuestionLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        QuestionLabel.setText("Test Question");
+        symbolLabel.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        symbolLabel.setForeground(new java.awt.Color(255, 255, 255));
+        symbolLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        symbolLabel.setText("/"); // NOI18N
 
-        SymbolLabel.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        SymbolLabel.setForeground(new java.awt.Color(255, 255, 255));
-        SymbolLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        SymbolLabel.setText("/"); // NOI18N
-
-        MaxLabel.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        MaxLabel.setForeground(new java.awt.Color(255, 255, 255));
-        MaxLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        MaxLabel.setText("20"); // NOI18N
+        maxLabel.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        maxLabel.setForeground(new java.awt.Color(255, 255, 255));
+        maxLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        maxLabel.setText("20"); // NOI18N
 
         counterLabel.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         counterLabel.setForeground(new java.awt.Color(255, 255, 255));
@@ -201,27 +199,29 @@ public class QuizPanel extends RsaQuizPanel
         mainPanel.setLayout(mainPanelLayout);
         mainPanelLayout.setHorizontalGroup(
             mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(pictureQuestionPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(mainPanelLayout.createSequentialGroup()
+                .addComponent(questionLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
             .addGroup(mainPanelLayout.createSequentialGroup()
                 .addGap(14, 14, 14)
-                .addComponent(TimeLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(timeLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(imagelabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addComponent(PictureQuestionPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, mainPanelLayout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(backjButton)
-                .addGap(65, 65, 65)
+                .addGap(62, 62, 62)
                 .addComponent(counterLabel)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(SymbolLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(symbolLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(MaxLabel)
+                .addComponent(maxLabel)
                 .addGap(62, 62, 62)
                 .addComponent(nextjButton)
                 .addGap(50, 50, 50)
                 .addComponent(SubmitAnswerjButton)
-                .addGap(27, 27, 27))
-            .addComponent(QuestionLabel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(49, 49, 49))
         );
         mainPanelLayout.setVerticalGroup(
             mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -230,53 +230,35 @@ public class QuizPanel extends RsaQuizPanel
                     .addComponent(imagelabel, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(mainPanelLayout.createSequentialGroup()
                         .addGap(18, 18, 18)
-                        .addComponent(TimeLabel)))
-                .addGap(18, 18, 18)
-                .addComponent(PictureQuestionPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(timeLabel)))
+                .addGap(32, 32, 32)
+                .addComponent(pictureQuestionPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(QuestionLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(questionLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(SubmitAnswerjButton)
-                        .addComponent(nextjButton)
-                        .addComponent(counterLabel)
-                        .addComponent(SymbolLabel)
-                        .addComponent(MaxLabel))
+                .addGroup(mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(SubmitAnswerjButton)
+                    .addComponent(nextjButton)
+                    .addComponent(counterLabel)
+                    .addComponent(symbolLabel)
+                    .addComponent(maxLabel)
                     .addComponent(backjButton))
-                .addGap(11, 11, 11))
+                .addGap(19, 19, 19))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(mainPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 616, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(mainPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 659, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(mainPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+            .addComponent(mainPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
     }// </editor-fold>//GEN-END:initComponents
 
 	int currentIndex = 0;
-    private void pic2jButtonActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_pic2jButtonActionPerformed
-    {//GEN-HEADEREND:event_pic2jButtonActionPerformed
-		checkAnswer(1);
-    }//GEN-LAST:event_pic2jButtonActionPerformed
-
-    private void pic3jButtonActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_pic3jButtonActionPerformed
-    {//GEN-HEADEREND:event_pic3jButtonActionPerformed
-		checkAnswer(2);
-    }//GEN-LAST:event_pic3jButtonActionPerformed
-
-    private void option1jButtonActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_option1jButtonActionPerformed
-    {//GEN-HEADEREND:event_option1jButtonActionPerformed
-		checkAnswer(0);
-    }//GEN-LAST:event_option1jButtonActionPerformed
-
     private void SubmitAnswerjButtonActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_SubmitAnswerjButtonActionPerformed
     {//GEN-HEADEREND:event_SubmitAnswerjButtonActionPerformed
 		this.getRsaQuizManger().setFeedBackVisible(true);
@@ -293,28 +275,43 @@ public class QuizPanel extends RsaQuizPanel
 		loadNextQuestion();
     }//GEN-LAST:event_nextjButtonActionPerformed
 
+    private void userOptionjToggleButton0ActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_userOptionjToggleButton0ActionPerformed
+    {//GEN-HEADEREND:event_userOptionjToggleButton0ActionPerformed
+        checkAnswer(0);
+    }//GEN-LAST:event_userOptionjToggleButton0ActionPerformed
+
+    private void userOptionjToggleButton1ActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_userOptionjToggleButton1ActionPerformed
+    {//GEN-HEADEREND:event_userOptionjToggleButton1ActionPerformed
+          checkAnswer(1);
+    }//GEN-LAST:event_userOptionjToggleButton1ActionPerformed
+
+    private void userOptionjToggleButton2ActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_userOptionjToggleButton2ActionPerformed
+    {//GEN-HEADEREND:event_userOptionjToggleButton2ActionPerformed
+           checkAnswer(2);
+    }//GEN-LAST:event_userOptionjToggleButton2ActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    public static javax.swing.JLabel InstructionLabel;
-    private javax.swing.JLabel MaxLabel;
-    private javax.swing.JPanel PictureQuestionPanel;
-    private javax.swing.JLabel QuestionLabel;
     private javax.swing.JButton SubmitAnswerjButton;
-    private javax.swing.JLabel SymbolLabel;
-    private javax.swing.JLabel TimeLabel;
     private javax.swing.JButton backjButton;
     private javax.swing.JLabel counterLabel;
     private javax.swing.JLabel imagelabel;
+    public static javax.swing.JLabel instructionLabel;
     private javax.swing.JPanel mainPanel;
+    private javax.swing.JLabel maxLabel;
     private javax.swing.JButton nextjButton;
-    private javax.swing.JButton option1jButton;
-    private javax.swing.JButton pic2jButton;
-    private javax.swing.JButton pic3jButton;
+    private javax.swing.JPanel pictureQuestionPanel;
+    private javax.swing.JLabel questionLabel;
+    private javax.swing.JLabel symbolLabel;
+    private javax.swing.JLabel timeLabel;
+    private javax.swing.JToggleButton userOptionjToggleButton0;
+    private javax.swing.JToggleButton userOptionjToggleButton1;
+    private javax.swing.JToggleButton userOptionjToggleButton2;
     // End of variables declaration//GEN-END:variables
 
 	private void loadQuestion(RsaSignQuestion question)
 	{
-		this.QuestionLabel.setText(question.getImageName());
+		this.questionLabel.setText(question.getImageName());
 
 		for (int index = 0; index < 3; index++)
 		{
@@ -322,14 +319,14 @@ public class QuizPanel extends RsaQuizPanel
 		}
 	}
 	int correctIndex;
-	final JButton[] buttons;
+	final JToggleButton[] buttons;
 
 	private void checkAnswer(int selectedOptionIndex)
 	{
 		var question = this.getUserData().getQuizQuestions().get(currentIndex);
 		boolean isAnswerCorrect = question.getOptions().get(selectedOptionIndex).equalsIgnoreCase(question.getImageName());
 		getUserData().getUserQuizResults()[currentIndex] = isAnswerCorrect;
-
+         var answer=question.getOptions().get(selectedOptionIndex).equalsIgnoreCase(question.getImageName());
 		loadNextQuestion();
 
 	}
