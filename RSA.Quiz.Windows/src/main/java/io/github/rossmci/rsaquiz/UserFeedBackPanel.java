@@ -2,7 +2,7 @@ package io.github.rossmci.rsaquiz;
 
 import java.util.ResourceBundle;
 
-public class UserFeedBackPanel extends RsaQuizPanel
+public final class UserFeedBackPanel extends RsaQuizPanel
 {
 
 	public UserFeedBackPanel()
@@ -19,7 +19,7 @@ public class UserFeedBackPanel extends RsaQuizPanel
 
 	public void showData()
 	{
-		this.jLabel9.setText(this.getUserData().getScore() + "");
+		this.correctScoreLabel.setText(this.getUserData().getScore() + "");
 	}
 	//declare and create your resource bundle
 	private ResourceBundle frames;
@@ -40,7 +40,7 @@ public class UserFeedBackPanel extends RsaQuizPanel
         jLabel5 = new javax.swing.JLabel();
         correctLabel = new javax.swing.JLabel();
         incorrectLabel = new javax.swing.JLabel();
-        jLabel9 = new javax.swing.JLabel();
+        correctScoreLabel = new javax.swing.JLabel();
         restartToggleButton = new javax.swing.JToggleButton();
         titleLabel = new javax.swing.JLabel();
 
@@ -66,9 +66,9 @@ public class UserFeedBackPanel extends RsaQuizPanel
         incorrectLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         incorrectLabel.setText(frames.getString("FeedBackForm.incorrectLabel.text")); // NOI18N
 
-        jLabel9.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        jLabel9.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel9.setText("0"); // NOI18N
+        correctScoreLabel.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        correctScoreLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        correctScoreLabel.setText("0"); // NOI18N
 
         restartToggleButton.setBackground(new java.awt.Color(255, 51, 51));
         restartToggleButton.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
@@ -91,7 +91,7 @@ public class UserFeedBackPanel extends RsaQuizPanel
                             .addGap(111, 111, 111)
                             .addComponent(correctLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                            .addComponent(jLabel9))
+                            .addComponent(correctScoreLabel))
                         .addGroup(jPanel2Layout.createSequentialGroup()
                             .addGap(95, 95, 95)
                             .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -117,7 +117,7 @@ public class UserFeedBackPanel extends RsaQuizPanel
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(correctLabel)
-                    .addComponent(jLabel9))
+                    .addComponent(correctScoreLabel))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(incorrectLabel)
@@ -146,10 +146,10 @@ public class UserFeedBackPanel extends RsaQuizPanel
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel correctLabel;
+    private javax.swing.JLabel correctScoreLabel;
     private javax.swing.JLabel incorrectLabel;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JLabel percentageLabel;
     private javax.swing.JToggleButton restartToggleButton;

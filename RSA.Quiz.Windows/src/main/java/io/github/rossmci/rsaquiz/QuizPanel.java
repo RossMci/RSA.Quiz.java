@@ -11,9 +11,9 @@ public class QuizPanel extends RsaQuizPanel
 		initComponents();
 		buttons = new JButton[]
 		{
-			    option1jButton,
-			    pic2jButton,
-				pic3jButton
+			option1jButton,
+			pic2jButton,
+			pic3jButton
 //			option1ToggleButton,
 //			pic2ToggleButton,
 //			pic3Button
@@ -264,32 +264,33 @@ public class QuizPanel extends RsaQuizPanel
 	int currentIndex = 0;
     private void pic2jButtonActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_pic2jButtonActionPerformed
     {//GEN-HEADEREND:event_pic2jButtonActionPerformed
-       checkAnswer(this.pic2jButton);
+		checkAnswer(1);
     }//GEN-LAST:event_pic2jButtonActionPerformed
 
     private void pic3jButtonActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_pic3jButtonActionPerformed
     {//GEN-HEADEREND:event_pic3jButtonActionPerformed
-        		checkAnswer(this.pic3jButton);
+		checkAnswer(2);
     }//GEN-LAST:event_pic3jButtonActionPerformed
 
     private void option1jButtonActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_option1jButtonActionPerformed
     {//GEN-HEADEREND:event_option1jButtonActionPerformed
-       checkAnswer(this.option1jButton);
+		checkAnswer(0);
     }//GEN-LAST:event_option1jButtonActionPerformed
 
     private void SubmitAnswerjButtonActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_SubmitAnswerjButtonActionPerformed
     {//GEN-HEADEREND:event_SubmitAnswerjButtonActionPerformed
-     		this.getRsaQuizManger().setFeedBackVisible(true);
+		this.getRsaQuizManger().setFeedBackVisible(true);
+
     }//GEN-LAST:event_SubmitAnswerjButtonActionPerformed
 
     private void backjButtonActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_backjButtonActionPerformed
     {//GEN-HEADEREND:event_backjButtonActionPerformed
-        loadPreviousQuestion();
+		loadPreviousQuestion();
     }//GEN-LAST:event_backjButtonActionPerformed
 
     private void nextjButtonActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_nextjButtonActionPerformed
     {//GEN-HEADEREND:event_nextjButtonActionPerformed
-    	loadNextQuestion();
+		loadNextQuestion();
     }//GEN-LAST:event_nextjButtonActionPerformed
 
 
@@ -314,25 +315,19 @@ public class QuizPanel extends RsaQuizPanel
 	private void loadQuestion(RsaSignQuestion question)
 	{
 		this.QuestionLabel.setText(question.getImageName());
-		int[] threeOptions =
-		{
-			0, 1, 2
-		};
-		Stackoverflow.fisherYatesShuffleArray(threeOptions);
-		correctIndex = threeOptions[0];
-		buttons[threeOptions[0]].setIcon(new javax.swing.ImageIcon(question.getPath()));
-		buttons[threeOptions[1]].setIcon(new javax.swing.ImageIcon(question.getWrongImageNameOption1()));// NOI18N
-		buttons[threeOptions[2]].setIcon(new javax.swing.ImageIcon(question.getWrongImageNameOption2()));// NOI18N
-//		this.pic3Button.setIcon(new javax.swing.ImageIcon(question.getPath()));// NOI18N
 
-		// fill the buttons in a random order
+		for (int index = 0; index < 3; index++)
+		{
+			buttons[index].setIcon(new javax.swing.ImageIcon(question.getOptions().get(index)));
+		}
 	}
 	int correctIndex;
 	final JButton[] buttons;
 
-	private void checkAnswer(JButton button)
+	private void checkAnswer(int selectedOptionIndex)
 	{
-		boolean isAnswerCorrect = (buttons[correctIndex] == button);
+		var question = this.getUserData().getQuizQuestions().get(currentIndex);
+		boolean isAnswerCorrect = question.getOptions().get(selectedOptionIndex).equalsIgnoreCase(question.getImageName());
 		getUserData().getUserQuizResults()[currentIndex] = isAnswerCorrect;
 
 		loadNextQuestion();
@@ -369,6 +364,7 @@ public class QuizPanel extends RsaQuizPanel
 		{
 			var question = this.getUserData().getQuizQuestions().get(currentIndex);
 			loadQuestion(question);
+			//highlight if Answed
 			this.counterLabel.setText("" + (currentIndex + 1));
 		}
 		else
