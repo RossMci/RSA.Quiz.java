@@ -97,7 +97,7 @@ public class RsaQuizBuilder
 		Collections.shuffle(options);
 		
 		//TODO: rsaSignQuestion.setOptions(options);
-		rsaSignQuestionList.setOptions(options);
+		rsaSignQuestion.setOptions(options);
 		rsaSignQuestion.setWrongImageNameOption1(rsaSignQuestionList.get(randomIndex1).getPath());
 		rsaSignQuestion.setWrongImageNameOption2(rsaSignQuestionList.get(randomIndex2).getPath());
 
