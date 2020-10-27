@@ -13,9 +13,20 @@ public class UserData
 	private List<RsaSignQuestion> quizQuestions;
 	private boolean[] userQuizResults = new boolean[testSize];// fill loop all false to begin
 	private boolean[] questionsAnswered = new boolean[testSize];// fill loop all false to begin
+	private int[] givenAnswers = new int[testSize];// fill loop all false to begin
+
+	public int[] getGivenAnswers()
+	{
+		return givenAnswers;
+	}
+
+	public void setGivenAnswers(int[] givenAnswers)
+	{
+		this.givenAnswers = givenAnswers;
+	}
+	
 
 	//TODO: possible WOrk
-		private int[] givenAnswers = new int[testSize];// fill loop all false to begin
 
 	public boolean[] getQuestionsAnswered()
 	{
@@ -29,7 +40,7 @@ public class UserData
 
 	public int getScore()
 	{
-		int score =0;
+		int score = 0;
 		for (int index = 0; index < userQuizResults.length; index++)
 		{
 			if (userQuizResults[index])
@@ -75,13 +86,11 @@ public class UserData
 	{
 		this.quizQuestions = new RsaQuizBuilder().buildQuiz(this.testSize);
 
-		for (int i = 0; i < userQuizResults.length; i++)
+		for (int i = 0; i < testSize; i++)
 		{
 			userQuizResults[i] = false;
-		}
-		for (int i = 0; i < questionsAnswered.length; i++)
-		{
 			questionsAnswered[i] = false;
+			givenAnswers[i] =-1;
 		}
 	}
 }

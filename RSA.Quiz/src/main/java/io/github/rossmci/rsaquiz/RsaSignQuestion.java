@@ -63,6 +63,7 @@ public class RsaSignQuestion
 	{
 		this.path = path;
 	}
+
 	public int getIndex()
 	{
 		return index;
@@ -72,25 +73,6 @@ public class RsaSignQuestion
 	{
 		this.index = index;
 	}
-	public String getWrongImageNameOption1()
-	{
-		return wrongImageNameOption1;
-	}
-
-	public void setWrongImageNameOption1(String wrongImageNameOption1)
-	{
-		this.wrongImageNameOption1 = wrongImageNameOption1;
-	}
-
-	public String getWrongImageNameOption2()
-	{
-		return wrongImageNameOption2;
-	}
-
-	public void setWrongImageNameOption2(String wrongImageNameOption2)
-	{
-		this.wrongImageNameOption2 = wrongImageNameOption2;
-	}
 
 	@Override
 	public String toString()
@@ -98,11 +80,16 @@ public class RsaSignQuestion
 		return "RSAImage{" + "imageName=" + imageName + ", category=" + category + ", path=" + path + '}';
 	}
 
+	public boolean isSelectedAnswerCorrect(int selectedOptionIndex)
+	{
+		return getOptions().get(selectedOptionIndex).equalsIgnoreCase(getAnswer());
+	}
 
-		public ArrayList<String> getOptions()
+	public ArrayList<String> getOptions()
 	{
 		return options;
 	}
+
 	public void setOptions(ArrayList<String> options)
 	{
 		this.options = options;
@@ -117,7 +104,6 @@ public class RsaSignQuestion
 	{
 		this.answer = answer;
 	}
-	
 
 	private ArrayList<String> options;
 	private int index;

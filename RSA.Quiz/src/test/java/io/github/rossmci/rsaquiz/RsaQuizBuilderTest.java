@@ -8,7 +8,6 @@ package io.github.rossmci.rsaquiz;
 import java.util.List;
 import static junit.framework.TestCase.assertEquals;
 import static junit.framework.TestCase.fail;
-import org.junit.Assert;
 
 /**
  *
@@ -63,9 +62,6 @@ public class RsaQuizBuilderTest
 
 		RsaQuizBuilder.generateRandomWrongAnswers(rsaSignQuestion, rsaSignQuestionList);
 
-		Assert.assertNotEquals(rsaSignQuestion.getPath(), rsaSignQuestion.getWrongImageNameOption1());
-		Assert.assertNotEquals(rsaSignQuestion.getPath(), rsaSignQuestion.getWrongImageNameOption2());
-		Assert.assertNotEquals(rsaSignQuestion.getWrongImageNameOption1(), rsaSignQuestion.getWrongImageNameOption2());
 
 		// TODO review the generated test code and remove the default call to fail.
 	}
