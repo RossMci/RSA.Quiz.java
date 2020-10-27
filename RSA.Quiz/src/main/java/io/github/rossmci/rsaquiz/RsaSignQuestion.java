@@ -1,5 +1,7 @@
 package io.github.rossmci.rsaquiz;
 
+import java.util.ArrayList;
+
 public class RsaSignQuestion
 {
 
@@ -97,6 +99,23 @@ public class RsaSignQuestion
 	}
 
 
+		public ArrayList<String> getOptions()
+	{
+		return options;
+	}
+	public String setOptions()
+	{
+		//TODO FIx
+		return wrongImageNameOption2;
+	}
+
+	public void setOptions(ArrayList<String> options)
+	{
+		this.options = options;
+	}
+	
+
+	private ArrayList<String> options;//get and set
 	private int index;
 	private String imageName;
 	private String category;

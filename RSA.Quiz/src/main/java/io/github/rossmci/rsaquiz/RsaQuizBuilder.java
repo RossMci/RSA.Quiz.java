@@ -3,6 +3,7 @@ package io.github.rossmci.rsaquiz;
 import static io.github.rossmci.rsaquiz.RsaSignQuestionRepository.getAll;
 import java.io.IOException;
 import java.net.URISyntaxException;
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.Random;
@@ -89,7 +90,14 @@ public class RsaQuizBuilder
 			randomIndex2 = random.nextInt(rsaSignQuestionList.size());
 		}
 		while (questionIndex == randomIndex1 || questionIndex == randomIndex2 || randomIndex1 == randomIndex2);
+		String option2 = rsaSignQuestionList.get(randomIndex1).getPath();
+		String option3 = rsaSignQuestionList.get(randomIndex2).getPath();
 
+		ArrayList<String> options = new ArrayList<>();
+		Collections.shuffle(options);
+		
+		//TODO: rsaSignQuestion.setOptions(options);
+		rsaSignQuestionList.setOptions(options);
 		rsaSignQuestion.setWrongImageNameOption1(rsaSignQuestionList.get(randomIndex1).getPath());
 		rsaSignQuestion.setWrongImageNameOption2(rsaSignQuestionList.get(randomIndex2).getPath());
 

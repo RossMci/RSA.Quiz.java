@@ -14,6 +14,9 @@ public class UserData
 	private boolean[] userQuizResults = new boolean[testSize];// fill loop all false to begin
 	private boolean[] questionsAnswered = new boolean[testSize];// fill loop all false to begin
 
+	//TODO: possible WOrk
+		private int[] givenAnswers = new int[testSize];// fill loop all false to begin
+
 	public boolean[] getQuestionsAnswered()
 	{
 		return questionsAnswered;
@@ -26,7 +29,7 @@ public class UserData
 
 	public int getScore()
 	{
-		int score = 0;
+		int score =0;
 		for (int index = 0; index < userQuizResults.length; index++)
 		{
 			if (userQuizResults[index])
