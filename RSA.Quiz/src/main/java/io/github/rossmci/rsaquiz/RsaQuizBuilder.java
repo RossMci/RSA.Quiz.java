@@ -14,8 +14,45 @@ import java.util.Random;
  */
 public class RsaQuizBuilder
 {
-
 	public static void main(String[] args) throws Exception
+	{
+		String directoryContextPath = "signs";
+		List<RsaSignQuestion> rsaSignQuestionList = getAll(directoryContextPath, true);
+
+		buildBundle(rsaSignQuestionList);
+		//buildBundle(rsaSignQuestionList,"French");
+		//buildBundle(rsaSignQuestionList,"Irish");
+
+	}
+	public static void buildBundle(List<RsaSignQuestion> rsaSignQuestions)
+	{
+		String output = "";
+		for (RsaSignQuestion rsaSignQuestion : rsaSignQuestions)
+		{
+			output += rsaSignQuestion.getImageName().replaceAll(".gif", "").replaceAll(" ", "");
+			output += "=";
+			output += rsaSignQuestion.getImageName().replaceAll(".gif", "");
+			output += System.lineSeparator();
+		}
+		System.out.println(output);
+	}
+
+	public static void buildBundle(List<RsaSignQuestion> rsaSignQuestions, String language)
+	{
+		String output = "";
+		for (int index = 0; index < rsaSignQuestions.size(); index++)
+		{
+			RsaSignQuestion rsaSignQuestion= rsaSignQuestions.get(index);
+			
+			output += rsaSignQuestion.getImageName().replaceAll(".gif", "").replaceAll(" ", "");
+			output += "=";
+			output += language+index;
+			output += System.lineSeparator();
+		}
+		System.out.println(output);
+
+	}
+	public static void oldCheck() throws IOException, URISyntaxException
 	{
 		System.out.println("generateRandomWrongAnswers");
 		RsaQuizBuilder instance = new RsaQuizBuilder();
@@ -23,21 +60,15 @@ public class RsaQuizBuilder
 
 		for (RsaSignQuestion rsaSignQuestion : rsaSignQuestionList)
 		{
-			if (rsaSignQuestion.getPath().equalsIgnoreCase(rsaSignQuestion.getWrongImageNameOption1())
-					|| rsaSignQuestion.getPath().equalsIgnoreCase(rsaSignQuestion.getWrongImageNameOption2())
-					|| rsaSignQuestion.getWrongImageNameOption1().equalsIgnoreCase(rsaSignQuestion.getWrongImageNameOption2()))
 			{
 				System.out.println("");
 				System.out.println(rsaSignQuestion.getIndex());
 
 				System.out.println(rsaSignQuestion.getPath());
-				System.out.println(rsaSignQuestion.getWrongImageNameOption1());
-				System.out.println(rsaSignQuestion.getWrongImageNameOption2());
 
 			}
 		}
 		System.out.println("end test generateRandomWrongAnswers");
-
 	}
 
 	List<RsaSignQuestion> buildQuizBank()
@@ -62,9 +93,9 @@ public class RsaQuizBuilder
 
 		//TODO: maybe clone list first;
 		Collections.shuffle(rsaSignQuestionList);
-		
-		List<RsaSignQuestion> quiz = rsaSignQuestionList.subList(0, numberOfQuestions-1);
-		
+
+		List<RsaSignQuestion> quiz = rsaSignQuestionList.subList(0, numberOfQuestions);
+
 		return quiz;
 	}
 
@@ -94,12 +125,13 @@ public class RsaQuizBuilder
 		String option3 = rsaSignQuestionList.get(randomIndex2).getPath();
 
 		ArrayList<String> options = new ArrayList<>();
+		options.add(rsaSignQuestion.getAnswer());
+		options.add(option2);
+		options.add(option3);
+
 		Collections.shuffle(options);
-		
-		//TODO: rsaSignQuestion.setOptions(options);
+
 		rsaSignQuestion.setOptions(options);
-		rsaSignQuestion.setWrongImageNameOption1(rsaSignQuestionList.get(randomIndex1).getPath());
-		rsaSignQuestion.setWrongImageNameOption2(rsaSignQuestionList.get(randomIndex2).getPath());
 
 	}
 }
