@@ -2,6 +2,7 @@ package io.github.rossmci.rsaquiz;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.text.DateFormat;
 import java.util.Date;
 import java.util.ResourceBundle;
 import javax.swing.Timer;
@@ -10,9 +11,10 @@ import javax.swing.Timer;
  *
  * @author Ross Mcinerney
  */
+
 public class HeadingPanel extends javax.swing.JPanel
 {
-
+// sets up the clock in order to track the date and time.
 	private void initClock()
 	{
 		Timer timer = new Timer(1000, updateClockAction);
@@ -24,7 +26,14 @@ public class HeadingPanel extends javax.swing.JPanel
 		@Override
 		public void actionPerformed(ActionEvent e)
 		{
-			timeDisplayLabel.setText(new Date().toString());
+			Date date = new Date();
+			
+			
+			var locale = rsaQuizManger.getLocale();
+			DateFormat dateFormat =DateFormat.getDateTimeInstance(DateFormat.SHORT, DateFormat.SHORT, locale);
+			String dateString  = dateFormat.format(date);
+
+			timeDisplayLabel.setText(dateString);
 		}
 	};
 
@@ -58,7 +67,9 @@ public class HeadingPanel extends javax.swing.JPanel
 
 	public void reloadLocaleResource()
 	{
-		this.framesResourceBundle = ResourceBundle.getBundle("bundles/Frames", rsaQuizManger.getLocale());
+		this.framesResourceBundle = ResourceBundle.getBundle("bundles/Frames", this.getRsaQuizManger().getLocale());
+        optionsjButton.setText(framesResourceBundle.getString("HeadingPanel.optionsButton.text")); // NOI18N
+
 
 	}
 
@@ -81,7 +92,8 @@ public class HeadingPanel extends javax.swing.JPanel
 
         setBackground(new java.awt.Color(255, 51, 51));
 
-        optionsjButton.setText("Options");
+        java.util.ResourceBundle bundle = java.util.ResourceBundle.getBundle("bundles/Frames"); // NOI18N
+        optionsjButton.setText(bundle.getString("HeadingPanel.optionsButton.text")); // NOI18N
         optionsjButton.addActionListener(new java.awt.event.ActionListener()
         {
             public void actionPerformed(java.awt.event.ActionEvent evt)
@@ -101,9 +113,9 @@ public class HeadingPanel extends javax.swing.JPanel
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addComponent(imagelabel)
-                .addGap(18, 18, 18)
-                .addComponent(timeDisplayLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(timeDisplayLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(imagelabel, javax.swing.GroupLayout.PREFERRED_SIZE, 287, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(optionsjButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGap(22, 22, 22))
@@ -112,12 +124,12 @@ public class HeadingPanel extends javax.swing.JPanel
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(optionsjButton, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(timeDisplayLabel)
-                        .addGap(16, 16, 16))
-                    .addComponent(imagelabel, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(imagelabel, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 6, Short.MAX_VALUE))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(20, 20, 20)
+                .addComponent(timeDisplayLabel)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 

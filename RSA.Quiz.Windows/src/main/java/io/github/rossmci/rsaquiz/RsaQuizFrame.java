@@ -13,6 +13,7 @@ public class RsaQuizFrame extends javax.swing.JFrame implements RsaQuizManger
 	public RsaQuizFrame()
 	{
 		initComponents();
+		// manges the panels too be displayed in the quiz
 		this.headingPanel1.setRsaQuizManger(this);
 		//panels[1] = this.headingPanel1;
 
@@ -20,6 +21,7 @@ public class RsaQuizFrame extends javax.swing.JFrame implements RsaQuizManger
 		panels[1] = this.splashScreenPanel1;
 		panels[2] = this.quizPanel;
 		panels[3] = this.userFeedBackPanel1;
+		// sets panels too there default
 		for (RsaQuizPanel panel : panels)
 		{
 			if (panel != null)
@@ -106,6 +108,7 @@ public class RsaQuizFrame extends javax.swing.JFrame implements RsaQuizManger
 				panel.reloadLocaleResource();
 			}
 		}
+		this.headingPanel1.reloadLocaleResource();
 		this.loadQuestions(locale);
 	}
 
@@ -219,14 +222,14 @@ public class RsaQuizFrame extends javax.swing.JFrame implements RsaQuizManger
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         headingPanel1.setMaximumSize(new java.awt.Dimension(33267, 549));
-        getContentPane().add(headingPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 610, -1));
-        getContentPane().add(splashScreenPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 610, 590));
-        getContentPane().add(languagePanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 54, 610, 530));
+        getContentPane().add(headingPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 620, -1));
+        getContentPane().add(splashScreenPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 620, 590));
+        getContentPane().add(languagePanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 54, 620, 530));
 
         quizPanel.setMaximumSize(new java.awt.Dimension(590, 580));
         quizPanel.setPreferredSize(new java.awt.Dimension(590, 670));
-        getContentPane().add(quizPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 48, 610, 540));
-        getContentPane().add(userFeedBackPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 54, 610, 530));
+        getContentPane().add(quizPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 48, 620, 540));
+        getContentPane().add(userFeedBackPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 54, 620, 530));
 
         pack();
         setLocationRelativeTo(null);

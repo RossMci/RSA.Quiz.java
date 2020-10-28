@@ -24,6 +24,7 @@ public class LanguagePanel extends RsaQuizPanel
 		frToggleButton.setToolTipText(framesResourceBundle.getString("LanguageMenu.frToggleButton.toolTipText")); // NOI18N
 	}
 
+	// changes the app locle throught out the program
 	private void changeAppLocale(String locale)
 	{
 		this.setVisible(false);
@@ -47,6 +48,7 @@ public class LanguagePanel extends RsaQuizPanel
         ieToggleButton = new javax.swing.JToggleButton();
         enToggleButton = new javax.swing.JToggleButton();
 
+        setBackground(new java.awt.Color(0, 0, 0));
         setPreferredSize(new java.awt.Dimension(690, 542));
 
         frToggleButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/flags/fr.png"))); // NOI18N
@@ -84,24 +86,27 @@ public class LanguagePanel extends RsaQuizPanel
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(66, 66, 66)
-                .addComponent(frToggleButton, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(ieToggleButton, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(enToggleButton, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(91, Short.MAX_VALUE))
+                .addContainerGap(35, Short.MAX_VALUE)
+                .addComponent(frToggleButton, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(40, 40, 40)
+                .addComponent(ieToggleButton, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(26, 26, 26)
+                .addComponent(enToggleButton, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(49, 49, 49))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(189, 189, 189)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                .addGap(45, 45, 45)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(enToggleButton, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(ieToggleButton, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(frToggleButton, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(280, Short.MAX_VALUE))
+                    .addComponent(frToggleButton, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(ieToggleButton, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(76, Short.MAX_VALUE))
         );
+
+        layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {enToggleButton, frToggleButton, ieToggleButton});
+
     }// </editor-fold>//GEN-END:initComponents
 
     private void frToggleButtonActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_frToggleButtonActionPerformed

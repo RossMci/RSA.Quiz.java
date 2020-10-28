@@ -9,6 +9,7 @@ package io.github.rossmci.rsaquiz;
  *
  * @author Ross Mcinerney
  */
+// not impleamented as of yet because of time constraints
 public class LoginPanel extends RsaQuizPanel
 {
 

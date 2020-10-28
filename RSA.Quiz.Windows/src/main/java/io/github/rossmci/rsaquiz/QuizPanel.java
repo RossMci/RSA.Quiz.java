@@ -9,6 +9,7 @@ public class QuizPanel extends RsaQuizPanel
 	public QuizPanel()
 	{
 		initComponents();
+		// puts buttons into an array
 		buttons = new JToggleButton[]
 		{
 			userOptionjToggleButton0,
@@ -28,7 +29,7 @@ public class QuizPanel extends RsaQuizPanel
 	}
 	int currentIndex;
 	final JToggleButton[] buttons;
-
+  // check the answers when user clicks an option
 	private void checkAnswer(int selectedOptionIndex)
 	{
 		unToogleButtons();
@@ -41,25 +42,25 @@ public class QuizPanel extends RsaQuizPanel
 		userData.getGivenAnswers()[currentIndex] = selectedOptionIndex;
 		userData.getUserQuizResults()[currentIndex] = isAnswerCorrect;
 	}
-
+   //sets up the quiz
 	public void initQuiz()
 	{
 		currentIndex = -1;
 		loadNextQuestion();// Will get the first question
 	}
-
+  // when next is pressed it gets the next question
 	private void loadNextQuestion()
 	{
 		currentIndex++;
 		loadQuestion();
 	}
-
+   // loads the previous questions in the quiz
 	private void loadPreviousQuestion()
 	{
 		currentIndex--;
 		loadQuestion();
 	}
-
+  // loads the questions for the quiz
 	private void loadQuestion()
 	{
 		manageNavigationButtons();
@@ -68,14 +69,14 @@ public class QuizPanel extends RsaQuizPanel
 		loadQuestion(question);
 		this.counterLabel.setText("" + (currentIndex + 1));
 	}
-
+    // manges the navigation  throught the quiz
 	private void manageNavigationButtons()
 	{
 		int testSize = this.getRsaQuizManger().getUser().getUserData().getQuizQuestions().size() -1;
 		this.backjButton.setEnabled(currentIndex != 0);
 		this.nextjButton.setEnabled(currentIndex != testSize);
 	}
-
+   // sets the locales for the questions and formats the questions
 	private void loadQuestion(RsaSignQuestion question)
 	{
 		var questionsResourceBundle = ResourceBundle.getBundle("bundles/questions", this.getRsaQuizManger().getLocale());
@@ -89,7 +90,7 @@ public class QuizPanel extends RsaQuizPanel
 		}
 		loadSavedAnswer(currentIndex);
 	}
-
+    // saves the answers
 	private void loadSavedAnswer(int currentIndex)
 	{
 		int answerIndex = getUserData().getGivenAnswers()[currentIndex];
@@ -103,7 +104,7 @@ public class QuizPanel extends RsaQuizPanel
 			this.buttons[answerIndex].setSelected(true);
 		}
 	}
-
+   // un toggles the buttons when moveing through the quiz
 	private void unToogleButtons()
 	{
 		for (JToggleButton button : buttons)
@@ -123,8 +124,6 @@ public class QuizPanel extends RsaQuizPanel
     {
 
         mainPanel = new javax.swing.JPanel();
-        imagelabel = new javax.swing.JLabel();
-        timeLabel = new javax.swing.JLabel();
         pictureQuestionPanel = new javax.swing.JPanel();
         instructionLabel = new javax.swing.JLabel();
         userOptionjToggleButton0 = new javax.swing.JToggleButton();
@@ -142,14 +141,6 @@ public class QuizPanel extends RsaQuizPanel
 
         mainPanel.setBackground(new java.awt.Color(255, 51, 51));
         mainPanel.setPreferredSize(new java.awt.Dimension(687, 542));
-
-        imagelabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        imagelabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/rsa-logo.png"))); // NOI18N
-
-        timeLabel.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        timeLabel.setForeground(new java.awt.Color(255, 255, 255));
-        timeLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        timeLabel.setText("17:00"); // NOI18N
 
         pictureQuestionPanel.setBackground(new java.awt.Color(255, 255, 255));
         pictureQuestionPanel.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 0, 1, 0, new java.awt.Color(255, 51, 51)));
@@ -191,6 +182,11 @@ public class QuizPanel extends RsaQuizPanel
             }
         });
 
+        questionLabel.setBackground(new java.awt.Color(255, 51, 51));
+        questionLabel.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        questionLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        questionLabel.setText("Test Question");
+
         javax.swing.GroupLayout pictureQuestionPanelLayout = new javax.swing.GroupLayout(pictureQuestionPanel);
         pictureQuestionPanel.setLayout(pictureQuestionPanelLayout);
         pictureQuestionPanelLayout.setHorizontalGroup(
@@ -202,8 +198,9 @@ public class QuizPanel extends RsaQuizPanel
                 .addComponent(userOptionjToggleButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 187, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0)
                 .addComponent(userOptionjToggleButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(38, Short.MAX_VALUE))
             .addComponent(instructionLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(questionLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pictureQuestionPanelLayout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {userOptionjToggleButton0, userOptionjToggleButton1, userOptionjToggleButton2});
@@ -213,18 +210,14 @@ public class QuizPanel extends RsaQuizPanel
             .addGroup(pictureQuestionPanelLayout.createSequentialGroup()
                 .addGap(8, 8, 8)
                 .addComponent(instructionLabel)
-                .addGap(18, 18, 18)
-                .addGroup(pictureQuestionPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(userOptionjToggleButton0, javax.swing.GroupLayout.DEFAULT_SIZE, 319, Short.MAX_VALUE)
-                    .addComponent(userOptionjToggleButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(userOptionjToggleButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(questionLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(pictureQuestionPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(userOptionjToggleButton1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(userOptionjToggleButton2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(userOptionjToggleButton0, javax.swing.GroupLayout.DEFAULT_SIZE, 282, Short.MAX_VALUE)))
         );
-
-        questionLabel.setBackground(new java.awt.Color(255, 51, 51));
-        questionLabel.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        questionLabel.setForeground(new java.awt.Color(255, 255, 255));
-        questionLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        questionLabel.setText("Test Question");
 
         symbolLabel.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         symbolLabel.setForeground(new java.awt.Color(255, 255, 255));
@@ -279,42 +272,27 @@ public class QuizPanel extends RsaQuizPanel
         mainPanelLayout.setHorizontalGroup(
             mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(pictureQuestionPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addGroup(mainPanelLayout.createSequentialGroup()
-                .addComponent(questionLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
-            .addGroup(mainPanelLayout.createSequentialGroup()
-                .addGap(14, 14, 14)
-                .addComponent(timeLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(imagelabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, mainPanelLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(backjButton)
-                .addGap(62, 62, 62)
+                .addGap(57, 57, 57)
+                .addComponent(backjButton, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(counterLabel)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(symbolLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(maxLabel)
-                .addGap(62, 62, 62)
-                .addComponent(nextjButton)
-                .addGap(50, 50, 50)
+                .addGap(37, 37, 37)
+                .addComponent(nextjButton, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(60, 60, 60)
                 .addComponent(SubmitAnswerjButton)
-                .addGap(49, 49, 49))
+                .addGap(62, 62, 62))
         );
         mainPanelLayout.setVerticalGroup(
             mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(mainPanelLayout.createSequentialGroup()
-                .addGroup(mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(imagelabel, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(mainPanelLayout.createSequentialGroup()
-                        .addGap(18, 18, 18)
-                        .addComponent(timeLabel)))
-                .addGap(32, 32, 32)
+                .addGap(80, 80, 80)
                 .addComponent(pictureQuestionPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(questionLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(26, 26, 26)
                 .addGroup(mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(SubmitAnswerjButton)
                     .addComponent(nextjButton)
@@ -322,7 +300,7 @@ public class QuizPanel extends RsaQuizPanel
                     .addComponent(symbolLabel)
                     .addComponent(maxLabel)
                     .addComponent(backjButton))
-                .addGap(19, 19, 19))
+                .addGap(42, 42, 42))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
@@ -376,7 +354,6 @@ public class QuizPanel extends RsaQuizPanel
     private javax.swing.JButton SubmitAnswerjButton;
     private javax.swing.JButton backjButton;
     private javax.swing.JLabel counterLabel;
-    private javax.swing.JLabel imagelabel;
     public static javax.swing.JLabel instructionLabel;
     private javax.swing.JPanel mainPanel;
     private javax.swing.JLabel maxLabel;
@@ -384,7 +361,6 @@ public class QuizPanel extends RsaQuizPanel
     private javax.swing.JPanel pictureQuestionPanel;
     private javax.swing.JLabel questionLabel;
     private javax.swing.JLabel symbolLabel;
-    private javax.swing.JLabel timeLabel;
     private javax.swing.JToggleButton userOptionjToggleButton0;
     private javax.swing.JToggleButton userOptionjToggleButton1;
     private javax.swing.JToggleButton userOptionjToggleButton2;
