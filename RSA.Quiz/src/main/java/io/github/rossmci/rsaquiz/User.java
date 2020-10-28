@@ -4,8 +4,10 @@ package io.github.rossmci.rsaquiz;
  *
  * @author Ross Mcinerney
  */
+// user Login Extra feature 2  if time allows 
 public class User
 {
+	// getters and setters for user for use in the log in 
 	public User()
 	{
 		this.userData = new UserData();

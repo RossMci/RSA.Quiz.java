@@ -8,13 +8,13 @@ import java.util.List;
  */
 public class UserData
 {
-
+    // declated variables 
 	private int testSize = 20;
 	private List<RsaSignQuestion> quizQuestions;
 	private boolean[] userQuizResults = new boolean[testSize];// fill loop all false to begin
 	private boolean[] questionsAnswered = new boolean[testSize];// fill loop all false to begin
 	private int[] givenAnswers = new int[testSize];// fill loop all false to begin
-
+    // getters and setters for varaibles
 	public int[] getGivenAnswers()
 	{
 		return givenAnswers;
@@ -37,7 +37,7 @@ public class UserData
 	{
 		this.questionsAnswered = questionsAnswered;
 	}
-
+   //  keeps track of the score the user gets 
 	public int getScore()
 	{
 		int score = 0;
@@ -47,11 +47,10 @@ public class UserData
 			{
 				score++;
 			}
-
 		}
 		return score;
 	}
-
+   
 	public int getTestSize()
 	{
 		return testSize;
@@ -81,7 +80,7 @@ public class UserData
 	{
 		this.userQuizResults = userQuizResults;
 	}
-
+    // sets all the arrays to default values
 	public void startQuiz() throws Exception
 	{
 		this.quizQuestions = new RsaQuizBuilder().buildQuiz(this.testSize);

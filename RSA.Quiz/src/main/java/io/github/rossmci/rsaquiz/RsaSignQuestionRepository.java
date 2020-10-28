@@ -9,7 +9,7 @@ import java.util.List;
 
 public class RsaSignQuestionRepository
 {
-
+   // gets all the images paths and names  also puts into an arraylist 
 	public static ArrayList<RsaSignQuestion> getAll(File directory, boolean descendIntoSubDirectories) throws IOException
 	{
 		ArrayList<RsaSignQuestion> resultList = new ArrayList<>();
@@ -37,7 +37,7 @@ public class RsaSignQuestionRepository
 		}
 		return resultList;
 	}
-
+  // gets all the uri and  loads the images and adds them to the array list
 	public static List<RsaSignQuestion> getAll(String directoryContextPath, boolean descendIntoSubDirectories) throws IOException, URISyntaxException
 	{
 		ClassLoader classLoader = Thread.currentThread().getContextClassLoader();
@@ -47,7 +47,7 @@ public class RsaSignQuestionRepository
 
 		return RsaSignQuestionRepository.getAll(directory, descendIntoSubDirectories);
 	}
-
+   // prints all the images
 	public static void main(String[] args) throws IOException, URISyntaxException
 	{
 		String directoryContextPath = "signs";

@@ -16,14 +16,15 @@ public class RsaQuizBuilder
 {
 	public static void main(String[] args) throws Exception
 	{
-		String directoryContextPath = "signs";
-		List<RsaSignQuestion> rsaSignQuestionList = getAll(directoryContextPath, true);
-
-		buildBundle(rsaSignQuestionList);
-		//buildBundle(rsaSignQuestionList,"French");
-		//buildBundle(rsaSignQuestionList,"Irish");
+//		String directoryContextPath = "signs";
+//		List<RsaSignQuestion> rsaSignQuestionList = getAll(directoryContextPath, true);
+//
+//		buildBundle(rsaSignQuestionList);
+//		//buildBundle(rsaSignQuestionList,"French");
+//		//buildBundle(rsaSignQuestionList,"Irish");
 
 	}
+	//gets  all the names of the images in order to put into the bundles
 	public static void buildBundle(List<RsaSignQuestion> rsaSignQuestions)
 	{
 		String output = "";
@@ -36,7 +37,7 @@ public class RsaQuizBuilder
 		}
 		System.out.println(output);
 	}
-
+	//gets  all the names of the images in order to put into the bundles for locales
 	public static void buildBundle(List<RsaSignQuestion> rsaSignQuestions, String language)
 	{
 		String output = "";
@@ -52,6 +53,7 @@ public class RsaQuizBuilder
 		System.out.println(output);
 
 	}
+	// this is the old way I checked what index image questions were at.
 	public static void oldCheck() throws IOException, URISyntaxException
 	{
 		System.out.println("generateRandomWrongAnswers");
@@ -77,7 +79,7 @@ public class RsaQuizBuilder
 
 		return null;
 	}
-
+   // builds the questions for the quiz before the quiz starts
 	public List<RsaSignQuestion> buildQuestions() throws IOException, URISyntaxException
 	{
 		String directoryContextPath = "signs";
@@ -86,7 +88,7 @@ public class RsaQuizBuilder
 		generateRandomWrongAnswers(rsaSignQuestionList);
 		return rsaSignQuestionList;
 	}
-
+      // gets the number of questions from 0 to numberOfquestions
 	public List<RsaSignQuestion> buildQuiz(int numberOfQuestions) throws IOException, URISyntaxException
 	{
 		List<RsaSignQuestion> rsaSignQuestionList = buildQuestions();
@@ -98,7 +100,7 @@ public class RsaQuizBuilder
 
 		return quiz;
 	}
-
+    // genarates wrong question too be put into the quiz so wrong answers can be shuffled later
 	public static void generateRandomWrongAnswers(List<RsaSignQuestion> rsaSignQuestionList)
 	{
 		for (RsaSignQuestion rsaSignQuestion : rsaSignQuestionList)
@@ -106,7 +108,7 @@ public class RsaQuizBuilder
 			generateRandomWrongAnswers(rsaSignQuestion, rsaSignQuestionList);
 		}
 	}
-
+     // shuffles the wrong answers between the options in the quiz
 	public static void generateRandomWrongAnswers(RsaSignQuestion rsaSignQuestion, List<RsaSignQuestion> rsaSignQuestionList)
 	{
 		int questionIndex = rsaSignQuestion.getIndex();
